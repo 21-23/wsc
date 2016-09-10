@@ -21,7 +21,6 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-/*TODO fix path with normal resolve*/
 app.use(express.static('../client/dist'));
 
 if (app.get('env') === 'development') {
