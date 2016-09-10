@@ -1,0 +1,27 @@
+{
+  "name": "wsc",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shastel/wsc.git"
+  },
+  "authors": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shastel/wsc/issues"
+  },
+  "homepage": "https://github.com/Shastel/wsc#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "pm2": "^1.1.3",
+    "react": "^15.3.1",
+    "redux": "^3.6.0",
+    "webpack": "^1.13.2"
+  },
+  "devDependencies": {
+    "eslint": "^3.4.0"
+  }
+}
