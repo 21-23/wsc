@@ -3,7 +3,11 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "pm2 start process.dev.json",
+    "stop": "pm2 stop process.dev.json",
+    "stop:prod": "pm2 stop process.json"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Shastel/wsc.git"
