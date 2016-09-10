@@ -1,0 +1,9 @@
+"apps" : [{
+  "name"        : "server",
+  "script"      : "./index.js",
+  "watch"       : false,
+  "env": {
+    "NODE_ENV": "development",
+    "NODE_PATH": "./"
+  }
+}]
