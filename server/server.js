@@ -10,7 +10,7 @@ if(app.get('env') === 'development'){
     app.use(logger('dev'));
 }
 
-app.use(express.static(path.join('../client/dist')));
+app.use(express.static(path.resolve(process.env.NODE_PATH + 'client/dist/')));
 
 app.use('/', routes);
 
