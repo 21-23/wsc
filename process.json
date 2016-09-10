@@ -5,10 +5,6 @@
   "combine_logs": true,
   "out_file": "./pm2.log",
   "env": {
-    "NODE_ENV": "development",
-    "NODE_PATH": "./"
-  },
-  "env_production": {
     "NODE_ENV": "production",
     "NODE_PATH": "./"
   }
