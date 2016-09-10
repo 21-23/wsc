@@ -1,4 +1,4 @@
-[]It's feature
-[]It's bugfix
+- [ ] It's feature
+- [ ] It's bugfix
 
 ### DESCRIPTION
