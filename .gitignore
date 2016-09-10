@@ -3,4 +3,7 @@ node_modules
 .idea
 .vscode
 *.swo
+
 dist
+
+*.log
