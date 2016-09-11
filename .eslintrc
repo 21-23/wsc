@@ -12,7 +12,7 @@
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
         // enable additional rules
-        "indent": ["error", 4],
+        "indent": [2, 4],
         "semi": ["error", "always"],
   }
 }
