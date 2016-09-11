@@ -7,7 +7,7 @@
     "build": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "start": "cross-env NODE_PATH=./ NODE_ENV=development nodemon index.js",
-    "start-prod": "npm run build:prod && pm2 start process.json",
+    "start-prod": "npm run build:prod && node index.js",
     "stop": "pm2 kill",
     "postinstall": "npm dedupe"
   },
