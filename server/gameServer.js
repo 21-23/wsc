@@ -1,8 +1,7 @@
 const WebSocketServer = require('uws').Server;
 
-function createGameServer(conf) {
-    const port = conf && conf.port || 8888;
-    const wss = new WebSocketServer({ port });
+function createGameServer(server) {
+    const wss = new WebSocketServer({ server });
 
     wss.on('connection', function (socket) {
         console.dir(socket);

@@ -12,7 +12,7 @@ const port = Number.isNaN(nconf.get('PORT')) ? nconf.get('PORT') : 3000;
 app.set('port', port);
 
 const server = http.createServer(app);
-createGameServer();
+createGameServer(server);
 
 server.listen(port);
 server.on('error', function __onServerError(err){
