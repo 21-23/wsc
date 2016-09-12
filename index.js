@@ -1,13 +1,9 @@
 const http = require('http');
 const app = require('./server/server');
 const createGameServer = require('./server/gameServer');
-const nconf = require('nconf');
+const config = require('./config');
 
-nconf.argv()
-     .env()
-     .file({ file: './config.json' });
-
-const port = Number.isNaN(nconf.get('PORT')) ? nconf.get('PORT') : 3000;
+const port = Number.isNaN(config.get('PORT')) ? config.get('PORT') : 3000;
 
 app.set('port', port);
 
