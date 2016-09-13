@@ -25,7 +25,11 @@ module.exports = {
             {
                 test: /\.pug$/,
                 loader: 'pug'
-            }
+            },
+            {
+                test: /\.png$/,
+                loaders: ['url-loader?limit=150000']
+            },
         ]
     },
     watch: isDevelopment,
