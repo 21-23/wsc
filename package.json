@@ -53,6 +53,7 @@
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.1.1",
+    "vorpal": "^1.11.4",
     "webpack": "^1.13.2"
   }
 }
