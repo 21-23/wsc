@@ -7,6 +7,10 @@ import { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import Logo from '../logo/logo';
+import TimeCard from  '../time/time';
+import Players from '../players/players';
+import Winners from '../winners/winners';
+import { Card } from 'material-ui/Card';
 
 export default class Application extends Component {
 
@@ -18,7 +22,11 @@ export default class Application extends Component {
                         title="Websocket Challenge"
                         iconElementLeft={ <Logo /> }
                     />
-
+                    <TimeCard/>
+                    <Card className="main-card">
+                        <Players/>
+                        <Winners/>
+                    </Card>
 
                 </div>
             </MuiThemeProvider>
