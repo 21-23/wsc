@@ -6,35 +6,31 @@ import React from 'react';
 import { PureComponent } from 'react';
 import { List, ListItem } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
-import Progress from '../progress/progress';
+import Player from './player';
+
+//stub
+import players from './stub';
 
 export default class Players extends PureComponent {
 
     render() {
         const headerStyle = {
-            fontSize: 25
+            fontSize: 25,
+            color: 'white'
         };
         return (
             <List className="players-list">
                 <Subheader className="players-header" style={headerStyle}>
                     <span>Players</span>
                 </Subheader>
-                <ListItem
-                    primaryText="Chelsea Otakan"
-                    leftIcon={<Progress length={4} completed={3}/>}
-                />
-                <ListItem
-                    leftIcon={<Progress length={4} completed={1}/>}
-                    primaryText="Eric Hoffman"
-                />
-                <ListItem
-                    leftIcon={<Progress length={4} completed={2}/>}
-                    primaryText="James Anderson"
-                />
-                <ListItem
-                    leftIcon={<Progress length={4} completed={0}/>}
-                    primaryText="Kerem Suer"
-                />
+                {
+                    players.map((player) => {
+                       return <Player name={player}
+                                      completed={Math.floor(Math.random() * 4)}
+                                      key={player}
+                              />
+                    })
+                }
             </List>
         );
     }
