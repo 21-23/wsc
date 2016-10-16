@@ -1,19 +1,32 @@
 const WebSocketServer = require('uws').Server;
+const master = require('./master');
+
+const cli = require('./cli');
+
+const constants = require('./constants');
+
+const isGameStarted = require('./game/stat').getGameStatus;
 
 function createGameServer(server) {
     const wss = new WebSocketServer({ server });
 
     wss.on('connection', function (socket) {
-        console.dir(socket);
+        if(master.isMaster(socket)) {
+            cli.log('Master detected');
+        } else {
+            socket.on('message', function __onGameMessage(message) {
+                if(isGameStarted()) {
+                    socket.send(message);
+                } else {
+                    socket.send(JSON.stringify(constants.GAME_NOT_START_MSG));
+                }
+            });
 
-        socket.on('message', function (message) {
-            console.log(message);
-            socket.send(message);
-        });
+            socket.on('close', function (){
 
-        socket.on('close', function (){
+            });
+        }
 
-        });
     });
 
     return wss;
