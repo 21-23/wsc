@@ -44,10 +44,7 @@ const players = [
     'Ardis Couvillion',
     'Mimi Hartsoe',
     'Raleigh Clausen',
-    'Yadira Eisner',
-    'Frankie Wannamaker',
-    'Allen Bachmann',
-    'Deana Kuykendall'
+    'Yadira Eisner'
 ];
 
 export default players;

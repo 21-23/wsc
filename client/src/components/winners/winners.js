@@ -2,14 +2,13 @@ import './_winners.styl';
 
 import React from 'react';
 
-//colors
-import { yellow500 } from 'material-ui/styles/colors';
-
 //components
 import { PureComponent } from 'react';
-import { List, ListItem } from 'material-ui/List';
+import { List } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
-import FontIcon from 'material-ui/FontIcon';
+import Winner from './winner';
+
+import winners from './stub';
 
 export default class Winners extends PureComponent {
 
@@ -20,25 +19,13 @@ export default class Winners extends PureComponent {
         return (
             <List className="winners-list">
                 <Subheader className="winners-header" style={headerStyle}>
-                    <span>Winners</span>
+                    <span>Top 10</span>
                 </Subheader>
-                <ListItem
-                    primaryText="1. Chelsea Otakan"
-                    leftIcon={<FontIcon className="material-icons" color={yellow500}>stars</FontIcon>}
-                />
-                <ListItem
-                    primaryText="2. Eric Hoffman"
-                    leftIcon={<FontIcon className="material-icons" color={yellow500}>stars</FontIcon>}
-
-                />
-                <ListItem
-                    primaryText="3. James Anderson"
-                    leftIcon={<FontIcon className="material-icons" color={yellow500}>stars</FontIcon>}
-                />
-                <ListItem
-                    primaryText="4. Kerem Suer"
-                    insetChildren={true}
-                />
+                {
+                    winners.map((name, index) => {
+                        return <Winner name={name} index={index} key={name} withStar={index < 3}/>
+                    })
+                }
             </List>
         );
     }

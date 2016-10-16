@@ -32,7 +32,7 @@ export default class TimeCard extends PureComponent {
                         <span>Start: {prettyDate(start)}</span>
                     </div>
                     <div className="timer">
-                        <FontIcon className="material-icons timer-icon" style={iconStyles} color={blue500}>alarm</FontIcon>
+                        <FontIcon className="material-icons timer-icon" style={iconStyles} color={blue500}>timelapse</FontIcon>
                         <Timer text={'Remaining'}
                                start={start}
                                end={end}

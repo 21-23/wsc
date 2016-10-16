@@ -23,14 +23,17 @@ export default class Players extends PureComponent {
                 <Subheader className="players-header" style={headerStyle}>
                     <span>Players</span>
                 </Subheader>
-                {
-                    players.map((player) => {
-                       return <Player name={player}
-                                      completed={Math.floor(Math.random() * 4)}
-                                      key={player}
-                              />
-                    })
-                }
+                <div className="players-list-wrapper">
+                    {
+                        players.map((player) => {
+                            return <Player name={player}
+                                           completed={Math.floor(Math.random() * 5)}
+                                           key={player}
+                            />
+                        })
+                    }
+                </div>
+
             </List>
         );
     }

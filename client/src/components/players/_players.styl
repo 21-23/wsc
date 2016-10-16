@@ -1,4 +1,6 @@
 header-color = rgb(139, 195, 74)
+player-w = 150px
+player-wrapper-margin = 20px
 
 .players-list
   display inline-block
@@ -7,10 +9,16 @@ header-color = rgb(139, 195, 74)
   margin 10px
   text-align center
 
+  .players-list-wrapper
+    display inline-block
+    text-align left
+    margin-left player-wrapper-margin
+
   .player
     display inline-block
-    width 150px
-    margin 10px
+    min-width player-w
+    width 12%
+    margin 1%
 
   .players-header
     text-align center
