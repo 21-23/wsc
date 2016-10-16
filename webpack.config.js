@@ -1,5 +1,29 @@
+var Webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var isDevelopment = process.env.NODE_ENV === 'development';
+//plugins
+var plugins = [];
+var htmlPlugin = new HtmlWebpackPlugin({
+    title: 'WSC',
+    template: './client/src/index.template.pug'
+});
+var defineProcessPlugin = new Webpack.DefinePlugin({
+    'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || '')
+    }
+});
+var uglifyPlugin = new Webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+});
+
+function isProduction() {
+    return process.env.NODE_ENV === 'production';
+}
+
+plugins.push(htmlPlugin);
+plugins.push(defineProcessPlugin);
+if (isProduction()) {
+    plugins.push(uglifyPlugin);
+}
 
 module.exports = {
     entry: "./client/src/index.js",
@@ -7,7 +31,7 @@ module.exports = {
         path: __dirname + '/client/dist',
         filename: "scripts/scripts.bundle.js"
     },
-    devtool: isDevelopment ? 'source-map' : null,
+    devtool: isProduction() ? null : 'source-map',
     module: {
         loaders: [
             {
@@ -32,10 +56,6 @@ module.exports = {
             },
         ]
     },
-    watch: isDevelopment,
-    //generate html template for application
-    plugins: [new HtmlWebpackPlugin({
-        title: 'WSC',
-        template: './client/src/index.template.pug'
-    })]
+    watch: !isProduction(),
+    plugins: plugins
 };
