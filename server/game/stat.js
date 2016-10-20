@@ -1,7 +1,7 @@
 let isGameStarted = false;
 let gameStartAt = null;
 
-module.exports = {
+export default {
     startGame() {
         if(!isGameStarted) {
             isGameStarted = true;
@@ -9,7 +9,7 @@ module.exports = {
 
             return true;
         }
-        
+
         return false;
     },
 

@@ -1,29 +1,50 @@
-const WebSocketServer = require('uws').Server;
-const master = require('./master');
+import { Server as WebSocketServer } from 'uws';
+import master from './master';
 
-const cli = require('./cli');
+import cli from './cli';
 
-const constants = require('./constants');
+import constants from './constants/messages';
 
-const isGameStarted = require('./game/stat').getGameStatus;
+import defaultVerifyClient from './utils/verify_client';
 
-function createGameServer(server) {
-    const wss = new WebSocketServer({ server });
+import store from './store';
+import SystemSelectors from './selectors/system_selectors';
+
+import isGameMessage from './validators/message_validator';
+
+export function createGameServer({server, verifyClient = defaultVerifyClient}) {
+    const wss = new WebSocketServer({
+        server,
+        verifyClient,
+    });
 
     wss.on('connection', function (socket) {
         if(master.isMaster(socket)) {
             cli.log('Master detected');
         } else {
             socket.on('message', function __onGameMessage(message) {
-                if(isGameStarted()) {
-                    socket.send(message);
+                const state = store.getState();
+                const isGameStarted = SystemSelectors.isGameStarted(state);
+                cli.log(`Message recived`);
+                if (isGameStarted) {
+                    //JSON.parse should be replaced
+                    const parsedMessage = JSON.parse(message);
+
+                    if(isGameMessage(parsedMessage.command)) {
+                        //Here game service would process game message
+                    }
+
                 } else {
                     socket.send(JSON.stringify(constants.GAME_NOT_START_MSG));
                 }
             });
 
             socket.on('close', function (){
+                if(!master.isMaster(this)){
+                    store.dispatch({
 
+                    });
+                }
             });
         }
 
@@ -31,5 +52,3 @@ function createGameServer(server) {
 
     return wss;
 }
-
-module.exports = createGameServer;

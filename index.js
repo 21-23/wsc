@@ -1,15 +1,14 @@
-const http = require('http');
-const app = require('./server/server');
-const createGameServer = require('./server/gameServer');
-const config = require('./config');
-const cli = require('./server/cli');
+import http from 'http';
+import app from './server/server';
+import { createGameServer } from './server/gameServer';
+import config from './config';
+import cli from './server/cli';
 
 const port = Number.isNaN(config.get('PORT')) ? config.get('PORT') : 3000;
 
 app.set('port', port);
 
 const server = http.createServer(app);
-createGameServer(server);
 
 server.listen(port);
 server.on('error', function __onServerError(err){
@@ -21,4 +20,6 @@ server.on('error', function __onServerError(err){
 
 server.on('listening', function __onListening(){
     cli.log(`Server ready on: ${port}`);
+
+    createGameServer({server});
 });

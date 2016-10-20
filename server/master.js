@@ -1,9 +1,9 @@
-module.exports = {
+export default {
     isMaster(socket) {
         return !socket;
     },
 
-    notifyMasters(action, message) {
-
+    notifyMasters(action) {
+        return action;
     },
 };
