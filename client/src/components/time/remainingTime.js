@@ -6,7 +6,7 @@ import { PureComponent } from 'react';
 //helpers
 import { prettyDate } from '../../helpers/date';
 
-export default class Timer extends PureComponent {
+export default class RemainingTime extends PureComponent {
     constructor(props) {
         super(props);
         const { start, end } = this.props;
@@ -36,7 +36,7 @@ export default class Timer extends PureComponent {
 
     render() {
         return (
-            <span>{this.props.text}: {prettyDate(this.state.timer)}</span>
+            <span>{this.props.text}{prettyDate(this.state.timer)}</span>
         );
     }
 };

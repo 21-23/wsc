@@ -47,4 +47,11 @@ const players = [
     'Yadira Eisner'
 ];
 
-export default players;
+export default function generate() {
+    return players.map((name) => {
+        return {
+            name,
+            progress: Math.floor(Math.random() * 5)
+        }
+    });
+}
