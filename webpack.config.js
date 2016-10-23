@@ -1,5 +1,6 @@
 var Webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
 //plugins
 var plugins = [];
 var htmlPlugin = new HtmlWebpackPlugin({
@@ -32,6 +33,13 @@ module.exports = {
         filename: "scripts/scripts.bundle.js"
     },
     devtool: isProduction() ? null : 'source-map',
+    resolve: {
+        alias: {
+            'constants': path.join(__dirname, 'client/src/constants/'),
+            'helpers': path.join(__dirname, 'client/src/helpers/'),
+            'components': path.join(__dirname, 'client/src/components/'),
+        },
+    },
     module: {
         loaders: [
             {

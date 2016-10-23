@@ -5,9 +5,8 @@ import { Component } from 'react';
 
 //components
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-import Logo from '../logo/logo';
-import Racecourse from '../racecourse/racecourse';
+import Header from 'components/header/header';
+import Racecourse from 'components/racecourse/racecourse';
 //stub
 import generatePlayers from './generatePlayers';
 
@@ -22,11 +21,7 @@ export default class Application extends Component {
         return (
             <MuiThemeProvider>
                 <div className="main-container">
-                    <AppBar
-                        title="Websocket Challenge"
-                        iconElementLeft={ <Logo /> }
-                    />
-
+                    <Header />
                     <Racecourse
                         start={start}
                         end={end}

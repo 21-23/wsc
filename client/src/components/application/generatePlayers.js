@@ -51,7 +51,8 @@ export default function generate() {
     return players.map((name) => {
         return {
             name,
-            progress: Math.floor(Math.random() * 5)
+            progress: Math.floor(Math.random() * 5),
+            id: Math.random()
         }
     });
 }

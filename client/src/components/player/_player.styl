@@ -1,8 +1,16 @@
-.player
-  padding 10px
-  min-width 300px
-  position relative
+@import "../../constants/colors.styl"
 
-  .runner
-    position absolute
-    left 20px
+.player
+  margin 10px
+  position relative
+  color raspberry
+  text-align left
+  padding 3% 0 3% 3%;
+  font-weight bold
+  box-shadow 2px 4px 2px -2px black
+
+  &:nth-child(odd)
+    background-color white-night
+
+  &:nth-child(even)
+    background-color night

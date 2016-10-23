@@ -4,7 +4,7 @@ import React from 'react';
 import { PureComponent } from 'react';
 
 //helpers
-import { prettyDate } from '../../helpers/date';
+import { prettyDate } from 'helpers/date';
 
 export default class RemainingTime extends PureComponent {
     constructor(props) {

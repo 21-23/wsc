@@ -5,7 +5,7 @@ import React from 'react';
 
 //components
 import { PureComponent } from 'react';
-import Time from '../time/time';
+import Time from 'components/time/time';
 import Race from './race';
 import Header from './header';
 
