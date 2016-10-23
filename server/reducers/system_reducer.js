@@ -1,6 +1,6 @@
 import Immutable from 'Immutable';
 
-import ActionTypes from '../constants/action_types/system_action_types.js';
+import ActionTypes from 'server/constants/action_types/system_action_types.js';
 
 const inntitialState = Immutable.fromJS({
     startTime: null,

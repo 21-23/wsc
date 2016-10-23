@@ -1,6 +1,6 @@
-import ProtocolMessages from '../constants/protocol_messages';
+import ProtocolMessages from 'server/constants/protocol_messages';
 
-export default function isGameMessage(message) {
+export function isGameCommand(message) {
     const keys = Object.keys(ProtocolMessages);
 
     for(let i = 0; i < keys.length; i++) {
@@ -10,4 +10,12 @@ export default function isGameMessage(message) {
     }
 
     return false;
+}
+
+export function isGameMessage(msg){
+    if(msg.command === ProtocolMessages.CHALLENGE_ACCEPTED){
+        return true;
+    } else {
+        return !!msg.token && isGameCommand(msg.command);
+    }
 }

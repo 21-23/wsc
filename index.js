@@ -1,6 +1,6 @@
 import http from 'http';
 import app from './server/server';
-import { createGameServer } from './server/gameServer';
+import { initializaeServers } from './server/web_socket/';
 import config from './config';
 import cli from './server/cli';
 
@@ -21,5 +21,5 @@ server.on('error', function __onServerError(err){
 server.on('listening', function __onListening(){
     cli.log(`Server ready on: ${port}`);
 
-    createGameServer({server});
+    initializaeServers({server});
 });

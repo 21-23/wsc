@@ -1,9 +1,9 @@
 import express from 'express';
 import path from 'path';
 
-import routes from './routes';
+import routes from 'server/routes';
 
-import setErrorHandlers from './utils/server_error_handling';
+import setErrorHandlers from 'server/utils/server_error_handling';
 
 const app = express();
 

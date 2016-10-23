@@ -1,4 +1,4 @@
-import messages from '../constants/messages';
+import messages from 'server/constants/messages';
 
 export function send(message, socket){
     return socket.send(JSON.stringify(message));

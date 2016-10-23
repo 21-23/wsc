@@ -1,8 +1,8 @@
 const vorpal = require('vorpal')();
 
-import store from './store';
+import store from 'server/store';
 
-import SystemActions from './actions/system_actions';
+import SystemActions from 'server/actions/system_actions';
 
 vorpal
   .command('start', 'Start game')

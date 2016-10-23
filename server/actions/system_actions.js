@@ -1,6 +1,6 @@
-import store from '../store';
-import SystemSelectors from '../selectors/system_selectors';
-import ActionTypes from '../constants/action_types/system_action_types.js';
+import store from 'server/store';
+import SystemSelectors from 'server/selectors/system_selectors';
+import ActionTypes from 'server/constants/action_types/system_action_types.js';
 
 function startGame () {
     const state = store.getState();
