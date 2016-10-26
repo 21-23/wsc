@@ -1,7 +1,5 @@
-import store from 'server/store';
-
 import Player from 'server/models/player';
-import GameActionTypes from 'server/constants/action_types/game_action_types';
+import { connectNewPlayer } from 'server/actions/game_actions';
 import Messages from 'server/constants/messages';
 import { getFirstTask } from 'server/game/utils';
 
@@ -18,13 +16,7 @@ export function challengeAccepted(message, socket){
         next: getFirstTask(),
     }));
 
-    store.dispatch({
-        type: GameActionTypes.PLAYER_CONNECTED,
-        payload: {
-            [player.id]: player
-        }
-    });
+    connectNewPlayer(player);
 
     return player;
-
 }

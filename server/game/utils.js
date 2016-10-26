@@ -1,5 +1,6 @@
 import conf from 'config';
 import ProtocolMessages from 'server/constants/protocol_messages';
+import { winTask } from 'server/game/tasks/win';
 
 export function getFirstTask(){
     const tasks = conf.get('tasks');
@@ -12,7 +13,7 @@ export function getFirstTask(){
 export function chooseAndPlay(message, player, socket){
     switch (message.command) {
     case ProtocolMessages.WIN:
-        socket.send('you win');
+        winTask(player, socket);
         break;
     default:
 
