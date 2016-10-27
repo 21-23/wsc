@@ -26,15 +26,6 @@ export default class Time extends PureComponent {
                     <FontIcon
                         className="material-icons timer-icon"
                         style={iconStyles}
-                        color={Constants.lightGreen}>
-                        alarm_on
-                    </FontIcon>
-                    <span>{prettyDate(start)}</span>
-                </div>
-                <div className="timer">
-                    <FontIcon
-                        className="material-icons timer-icon"
-                        style={iconStyles}
                         color={Constants.lightBlue}>
                         timelapse
                     </FontIcon>

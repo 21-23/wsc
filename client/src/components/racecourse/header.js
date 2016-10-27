@@ -10,7 +10,7 @@ export default class Header extends PureComponent {
         return (
             <div className="header">
                 <h1>Break the distance as soon as possible!</h1>
-                <h5>Show how fast are you.</h5>
+                <h5>Show how fast you are</h5>
             </div>
         );
     }

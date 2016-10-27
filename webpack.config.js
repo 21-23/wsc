@@ -4,7 +4,7 @@ var path = require('path');
 //plugins
 var plugins = [];
 var htmlPlugin = new HtmlWebpackPlugin({
-    title: 'WSC',
+    title: 'WebSocket Challenge',
     template: './client/src/index.template.pug'
 });
 var defineProcessPlugin = new Webpack.DefinePlugin({

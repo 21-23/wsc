@@ -17,11 +17,12 @@ export default class Header extends PureComponent {
         const titleStyle = {
             fontSize: 28,
             fontWeight: 'bold',
+            lineHeight: '69px',
         };
 
         return (
             <AppBar
-                title="Websocket Challenge"
+                title="WebSocket Challenge"
                 iconElementLeft={ <Logo /> }
                 style={style}
                 titleStyle={titleStyle}
