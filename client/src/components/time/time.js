@@ -8,7 +8,7 @@ import FontIcon from 'material-ui/FontIcon';
 import Timer from './remainingTime';
 
 //constants
-import Constants from 'constants/constants';
+import Constants from 'constants';
 
 //helpers
 import { prettyDate } from 'helpers/date';

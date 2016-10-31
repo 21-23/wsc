@@ -15,7 +15,7 @@ export default class Racecourse extends PureComponent {
         let races = [];
         for (let i = 0; i < count; i ++) {
             let racePlayers = players.filter((player) => {
-                return player.progress === i + 1;
+                return player.get('progress') === i + 1;
             });
             let race = <Race key={i} index={i} players={racePlayers} />;
 

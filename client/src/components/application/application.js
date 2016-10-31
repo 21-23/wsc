@@ -2,21 +2,26 @@ import './_application.styl';
 
 import React from 'react';
 import { Component } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 //components
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Header from 'components/header/header';
 import Racecourse from 'components/racecourse/racecourse';
-//stub
-import generatePlayers from './generatePlayers';
 
-export default class Application extends Component {
+//selectors
+import { start, end } from 'selectors/game_selectors';
+import { playersList } from 'selectors/players_selectors';
+
+class Application extends Component {
 
     render() {
-
-        //stub for timers
-        const start = new Date();
-        const end = new Date(start.getTime() + (2*60*60*1000));
+        const {
+            playersList,
+            start,
+            end,
+        } = this.props;
 
         return (
             <MuiThemeProvider>
@@ -25,10 +30,18 @@ export default class Application extends Component {
                     <Racecourse
                         start={start}
                         end={end}
-                        players={generatePlayers()}
+                        players={playersList}
                     />
                 </div>
             </MuiThemeProvider>
         );
     }
-};
+}
+
+const applicationSelector = createStructuredSelector({
+    playersList,
+    start,
+    end,
+});
+
+export default connect(applicationSelector)(Application);

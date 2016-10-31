@@ -1,5 +1,7 @@
+import './_animation.styl';
+
 import React from 'react';
-import {grey500} from 'material-ui/styles/colors';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 //components
 import {PureComponent} from 'react';
@@ -11,10 +13,20 @@ import {names, icons} from './names_and_icons';
 
 export default class Race extends PureComponent {
     render() {
-        const {index, players} = this.props;
+        const { index, players } = this.props;
         const iconStyle = {
             fontSize: 35
         };
+
+        const playersMap = players.map((player, position) => {
+            return (
+                <Player
+                    key={player.get('id')}
+                    position={index === 3 ? position : null}
+                    name={player.get('name')}
+                />
+            )
+        });
 
         return (
             <div className={`race`}>
@@ -30,17 +42,14 @@ export default class Race extends PureComponent {
                 </div>
 
                 <div className="race-players">
-                    {
-                        players.map((player, position) => {
-                            return (
-                                <Player
-                                    key={player.id}
-                                    position={index === 3 ? position : null}
-                                    name={player.name}
-                                />
-                            )
-                        })
-                    }
+                    {/*TODO: refactor animations*/}
+                    <ReactCSSTransitionGroup
+                        transitionName="move"
+                        transitionEnterTimeout={500}
+                        transitionLeaveTimeout={500}
+                    >
+                        { playersMap }
+                    </ReactCSSTransitionGroup>
                 </div>
             </div>
         );

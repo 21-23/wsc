@@ -5,7 +5,7 @@ import React from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import { PureComponent } from 'react';
 
-import Constants from 'constants/constants';
+import Constants from 'constants';
 import { isWinner } from 'helpers/game';
 
 
