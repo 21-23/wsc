@@ -1,4 +1,4 @@
-import Player from 'server/models/player';
+import { createPlayer } from 'server/models/player';
 import { connectNewPlayer } from 'server/actions/game_actions';
 import Messages from 'server/constants/messages';
 import { getFirstTask } from 'server/game/utils';
@@ -8,7 +8,7 @@ export function challengeAccepted(message, socket){
         socket.close();
     }
 
-    const player = new Player(message.name);
+    const player = createPlayer(message.name);
 
     socket.send(JSON.stringify({
         message: Messages.ACCEPTED,

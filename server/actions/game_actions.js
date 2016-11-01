@@ -23,5 +23,30 @@ function playerWinActionCreator(player, lnk) {
     };
 }
 
+function playerSolveTaskActionCreator(player) {
+    return {
+        type: GameActionTypes.PLAYER_SOLVE_TASK,
+        payload: {
+            [player.id]: {
+                currentTask: {},
+                taskSolved: player.taskSolved + 1,
+            }
+        }
+    };
+}
+
+function playerGetTaskActionCreator(player, currentTask){
+    return{
+        type: GameActionTypes.PLAYER_GET_TASK,
+        payload: {
+            [player.id]: {
+                currentTask
+            }
+        }
+    };
+}
+
+export const playerGetTask = bindAction(playerGetTaskActionCreator, store.dispatch);
+export const playerSolveTask = bindAction(playerSolveTaskActionCreator, store.dispatch);
 export const connectNewPlayer = bindAction(connectNewPlayerActionCreator, store.dispatch);
 export const playerWin = bindAction(playerWinActionCreator, store.dispatch);

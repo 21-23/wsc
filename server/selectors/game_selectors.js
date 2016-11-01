@@ -16,7 +16,7 @@ export const playerTokenMap = createSelector(
         [players],
         function (players) {
             return players.reduce(function(R, value) {
-                return R.set(value.token, value.id);
+                return R.set(value.get('token'), value.get('id'));
             }, Map());
         }
 );

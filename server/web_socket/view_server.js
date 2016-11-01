@@ -1,4 +1,4 @@
-import { Server as WebSocketServer } from 'ws';
+import { Server as WebSocketServer } from 'uws';
 
 import cli from 'server/cli';
 
