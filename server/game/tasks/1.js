@@ -9,7 +9,7 @@ function solve({ values, sign }, answer) {
 
 function start(){
     const sign = signs[Math.floor(Math.random() * signs.length)];
-    const arr = Array.from({length: 4}, ()=>Math.floor(Math.random()));
+    const arr = Array.from({ length: 4 }, () => Math.floor( Math.random() * 10));
 
     return {
         name: TASK_NAME,
