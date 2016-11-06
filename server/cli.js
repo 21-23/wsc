@@ -3,25 +3,24 @@ const vorpal = require('vorpal')();
 import store from 'server/store';
 
 import SystemActions from 'server/actions/system_actions';
+import { isGameStarted } from 'server/selectors/system_selectors';
 
 vorpal
   .command('start', 'Start game')
   .action(function(args, callback) {
-      SystemActions.startGame();
-      this.log('Game is started');
+      if(!isGameStarted(store.getState())) {
+          SystemActions.startGame();
+          this.log('Game is started');
+      } else {
+          this.log('Game already started');
+      }
+
       callback();
   });
 
 vorpal
   .command('startAt', 'get game start')
   .action(function(args, callback) {
-      // const gameStart = gameStat.getGameStart();
-      // if(gameStart) {
-      //     this.log(`Game start at ${new Date(gameStart)}`);
-      // } else {
-      //     this.log('Game not started yet');
-      // }
-
       callback();
   });
 

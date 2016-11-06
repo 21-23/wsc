@@ -11,7 +11,7 @@ const startTime = createSelector(
   }
 );
 
-const isGameStarted = createSelector(
+export const isGameStarted = createSelector(
   [system],
   function (systemState) {
       return systemState.get('isGameStarted');
