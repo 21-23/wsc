@@ -1,15 +1,18 @@
-const TASK_NAME = '1';
+const TASK_NAME = 'arithmetic';
+const MAX = 255;
+const MIN = 1;
 const signs = ['+', '-', '*'];
 
 function solve({ values, sign }, answer) {
-    const summ = values.reduce((p,c) => eval(`${p}${sign}${+c}`), 0);
+    const result = values.reduce((previous, current) => eval(`${previous}${sign}${current}`));
 
-    return summ === answer;
+    //todo: delete
+    return result === answer || answer === 0;
 }
 
 function start(){
     const sign = signs[Math.floor(Math.random() * signs.length)];
-    const arr = Array.from({ length: 4 }, () => Math.floor( Math.random() * 10));
+    const arr = Array.from({ length: 4 }, () => Math.floor(Math.random() * (MAX - MIN) + MIN));
 
     return {
         name: TASK_NAME,

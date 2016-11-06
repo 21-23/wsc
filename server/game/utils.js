@@ -10,9 +10,10 @@ import {
   playerSolveTask
 } from 'server/actions/game_actions';
 
-import first from 'server/game/tasks/1';
+import arithmetic from 'server/game/tasks/arithmetic';
+import bin_arithmetic from 'server/game/tasks/binary_arithmetic';
 
-const tasks = [first];
+const tasks = [arithmetic, bin_arithmetic];
 
 
 
@@ -39,10 +40,10 @@ export function solveTask(message, player, socket) {
     const currentTaskInd = tasks.findIndex(({name}) => taskData.name === name);
     if(typeof message.answer !== 'undefined' && taskData.name) { //anwer can be 0 or false
         const task = tasks[currentTaskInd];
-        const result = task.solve(taskData.task, message.answer);
+        const result = task.solve(taskData.task, message.answer, taskData.binaryData);
 
         if(result) {
-            //here we sould dispatch action with increment of solved task
+            //here we should dispatch action with increment of solved task
             //and set current task data as empty object
             playerSolveTask(player);
             const nextTask = getNextTask(task.name);
@@ -68,7 +69,7 @@ export function solveTask(message, player, socket) {
         const newTaskInd = tasks.findIndex(({name}) => name === message.command);
         if (newTaskInd !== player.taskSolved){
             //Player try to get task to early
-            process.nextTick(function(){
+            process.nextTick(function() {
                 socket.send('To early cowboy');
             });
         } else {
@@ -78,7 +79,14 @@ export function solveTask(message, player, socket) {
             playerGetTask(player, taskData);
 
             process.nextTick(function(){
-                socket.send(JSON.stringify(taskData));
+                socket.send(JSON.stringify({
+                    name: taskData.name,
+                    task: taskData.task,
+                }));
+
+                if (taskData.binaryData) {
+                    socket.send(taskData.binaryData);
+                }
             });
         }
     }
@@ -86,7 +94,7 @@ export function solveTask(message, player, socket) {
 
 export function chooseAndPlay(message, player, socket){
     player = player.toJS();
-    if(ProtocolMessages.WIN === message.command && player.taskSolved === 1) { //TASK length
+    if (ProtocolMessages.WIN === message.command && player.taskSolved === tasks.length) { //TASK length
         return winTask(player, socket);
     } else {
         return solveTask(...arguments);

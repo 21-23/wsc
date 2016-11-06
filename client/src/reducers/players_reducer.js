@@ -1,6 +1,6 @@
 import immutable from 'immutable';
 //stub
-import generatePlayers from './generatePlayers';
+import generatePlayers from './generate_players';
 
 const intitialState = immutable.fromJS({
     list: generatePlayers(),
