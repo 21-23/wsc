@@ -4,16 +4,18 @@ import cli from 'server/cli';
 
 import defaultVerifyClient from 'server/utils/verify_client';
 import { viewSelector } from 'server/selectors/viewSelectors';
+import { sendState } from 'server/actions/viewActions';
+import { remoteDispatch } from 'server/utils/remoteDispatch';
 import store from 'server/store';
 
 let server;
 
 export function getConnections() {
-    return server && server.clients;
+    return server && server.clients || [];
 }
 
 export function createViewServer({server, verifyClient = defaultVerifyClient}) {
-    const wss = new WebSocketServer({
+    const wss = server = new WebSocketServer({
         server,
         verifyClient,
         path: '/master',
@@ -21,15 +23,15 @@ export function createViewServer({server, verifyClient = defaultVerifyClient}) {
 
     wss.on('connection', function (socket) {
         cli.log('Master connected. Fetch actual store');
-        socket.send(viewSelector(store.getState()));
+
+        const viewState = viewSelector(store.getState());
+        remoteDispatch(socket, sendState(viewState));
 
         socket.on('message', function(){
             cli.log('disconnect fake view socket');
             this.close();
         });
     });
-
-    server = wss;
 
     return wss;
 }
