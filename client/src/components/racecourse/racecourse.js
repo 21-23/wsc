@@ -9,17 +9,24 @@ import Time from 'components/time/time';
 import Race from './race';
 import Header from './header';
 
+//constants
+import Constants from 'constants';
+
 export default class Racecourse extends PureComponent {
 
-    races(count, players) {
-        let races = [];
-        for (let i = 0; i < count; i ++) {
-            let racePlayers = players.filter((player) => {
-                return player.get('progress') === i + 1;
-            });
-            let race = <Race key={i} index={i} players={racePlayers} />;
+    races(players, count) {
+        const races = [];
 
-            races.push(race);
+        players = players.sort((a, b) => {
+            return a.get('progressTime') - b.get('progressTime') ;
+        });
+
+        for (let i = 0; i < count; i ++) {
+            const racePlayers = players.filter((player) => {
+                return player.get('progress') === i;
+            });
+
+            races.push(<Race key={i} index={i} players={racePlayers} />);
         }
 
         return races;
@@ -27,7 +34,7 @@ export default class Racecourse extends PureComponent {
 
     render() {
         const { players, start, end } = this.props;
-        let races = this.races(4, players);
+        const races = this.races(players, Constants.TASKS_LENGTH);
 
         return (
             <div className="racecourse">
@@ -39,9 +46,7 @@ export default class Racecourse extends PureComponent {
                     />
                 </div>
                 <div className="races-container">
-                    {
-                        races
-                    }
+                    { races }
                 </div>
             </div>
         );

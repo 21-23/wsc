@@ -48,11 +48,16 @@ const players = [
 ];
 
 export default function generate() {
-    return players.map((name) => {
+    return players.map((name, index) => {
+        const progress = Math.floor(Math.random() * 4);
+        const id = Math.random() + name;
+        const progressTime = Date.now() + index;
+
         return {
+            progressTime,
+            progress,
             name,
-            progress: Math.floor(Math.random() * 5),
-            id: Math.random()
+            id,
         }
     });
 }

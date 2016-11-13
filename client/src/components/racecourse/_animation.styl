@@ -1,17 +1,22 @@
+@import "../../constants/colors.styl"
+@import "../../constants/constants.styl"
+
 .move-enter
   opacity 0.01
-  transform scale(-1.5)
 
-.move-enter.move-enter-active
+.move-enter-active
   opacity 1
-  transform scale(1)
-  transition: 500ms
+  transition animation-duration
+
+.player.move-enter.move-enter-active
+  border-color yellow-sun
 
 .move-leave
-  transform scale(1)
   opacity 1
 
 .move-leave.move-leave-active
-  transform scale(-1.5)
   opacity 0.01
-  transition 500ms
+  transition animation-duration
+
+.move-leave.move-leave-active ~ .player
+  transform translate3d(0, animation-gap-height, 0)
