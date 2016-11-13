@@ -23,7 +23,9 @@ export default class Header extends PureComponent {
                 className="material-icons"
                 style={iconStyle}
                 color={Constants.raspberry}
-            >star</FontIcon> : null;
+            >
+                star
+            </FontIcon> : null;
         return (
             <div className="player">
                 { top }

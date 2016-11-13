@@ -21,11 +21,11 @@ export default class Race extends PureComponent {
             fontSize: 35
         };
 
-        const playersMap = players.map((player, position) => {
+        const playersMap = players.valueSeq().map((player, idx) => {
             return (
                 <Player
                     key={player.get('id')}
-                    position={index === Constants.LAST_RACE ? position : null}
+                    position={index === Constants.LAST_RACE ? idx : null}
                     name={player.get('name')}
                 />
             )
