@@ -2,7 +2,7 @@ import store from 'server/store';
 import SystemSelectors from 'server/selectors/system_selectors';
 import ActionTypes from 'server/constants/action_types/system_action_types.js';
 
-function startGame () {
+export function startGame () {
     const state = store.getState();
     const isGameStarted = SystemSelectors.isGameStarted(state);
 
@@ -14,7 +14,9 @@ function startGame () {
                 isGameStarted: true,
             }
         });
+        return true;
     }
+    return false;
 }
 
 export default {

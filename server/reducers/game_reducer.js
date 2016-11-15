@@ -1,4 +1,4 @@
-import Immutable from 'Immutable';
+import Immutable from 'immutable';
 import GameActionTypes from 'server/constants/action_types/game_action_types';
 const inntitialState = Immutable.fromJS({
     players: Immutable.Map(),

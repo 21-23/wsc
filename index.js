@@ -1,10 +1,10 @@
 import http from 'http';
 import app from './server/server';
 import { initializaeServers } from './server/web_socket/';
-import config from './config';
+import { initializebot } from 'server/telegram';
 import cli from './server/cli';
 
-const port = Number.isNaN(config.get('PORT')) ? config.get('PORT') : 3000;
+const port = process.env.PORT || 3000;
 
 app.set('port', port);
 
@@ -22,4 +22,5 @@ server.on('listening', function __onListening(){
     cli.log(`Server ready on: ${port}`);
 
     initializaeServers({server});
+    initializebot();
 });

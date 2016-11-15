@@ -1,4 +1,4 @@
-import Immutable from 'Immutable';
+import Immutable from 'immutable';
 
 import ActionTypes from 'server/constants/action_types/system_action_types.js';
 

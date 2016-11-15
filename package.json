@@ -10,7 +10,7 @@
     "build": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build-prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "start": "cross-env NODE_PATH=./ NODE_ENV=development nodemon --exec npm run babel-node -- index.js",
-    "start-prod": "npm run build-prod && pm2 start process.json",
+    "start-prod": "npm run build-prod && npm run start",
     "stop": "pm2 kill",
     "postinstall": "npm dedupe",
     "babel-node": "babel-node --plugins=transform-es2015-modules-commonjs"
@@ -44,10 +44,9 @@
     "reselect": "^2.5.4",
     "rx": "^4.1.0",
     "shortid": "^2.2.6",
+    "telebot": "^1.0.6",
     "url-loader": "^0.5.7",
-    "uws": "^0.10.0"
-  },
-  "devDependencies": {
+    "uws": "^0.10.0",
     "babel-cli": "^6.16.0",
     "babel-core": "^6.5.2",
     "babel-loader": "^6.2.3",
