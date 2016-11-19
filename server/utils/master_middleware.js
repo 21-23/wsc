@@ -1,6 +1,8 @@
+import cli from 'server/cli';
 import { getConnections } from 'server/web_socket/view_server';
 
 export default () => next => action => {
+    cli.log(`[view.middleware]: Action reccived: ${action.type}`);
     const result = next(action);
     const connections = getConnections(); // ???
     const msg = JSON.stringify(action);
