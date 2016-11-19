@@ -1,7 +1,7 @@
 import './_animation.styl';
 
 import React from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 //components
 import { PureComponent } from 'react';
@@ -28,7 +28,7 @@ export default class Race extends PureComponent {
                     position={index === Constants.LAST_RACE ? idx : null}
                     name={player.get('name')}
                 />
-            )
+            );
         });
 
         return (
@@ -56,4 +56,9 @@ export default class Race extends PureComponent {
             </div>
         );
     }
+}
+
+Race.propTypes = {
+    players: React.PropTypes.any,
+    index: React.PropTypes.number,
 };

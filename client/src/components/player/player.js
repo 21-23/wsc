@@ -9,7 +9,7 @@ import Constants from 'constants';
 import { isWinner } from 'helpers/game';
 
 
-export default class Header extends PureComponent {
+export default class Player extends PureComponent {
 
     render() {
         const { name, position } = this.props;
@@ -33,4 +33,9 @@ export default class Header extends PureComponent {
             </div>
         );
     }
+}
+
+Player.propTypes = {
+    name: React.PropTypes.string,
+    position: React.PropTypes.number,
 };

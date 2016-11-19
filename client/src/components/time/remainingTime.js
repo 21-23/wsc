@@ -12,7 +12,7 @@ export default class RemainingTime extends PureComponent {
         const { start, end } = this.props;
         this.state = {
             timer: end - start
-        }
+        };
     }
     componentDidMount() {
         this.start();
@@ -27,7 +27,7 @@ export default class RemainingTime extends PureComponent {
             this.setState({
                 timer: this.props.end - new Date()
             });
-        }, 1000)
+        }, 1000);
     }
 
     stop() {
@@ -39,4 +39,10 @@ export default class RemainingTime extends PureComponent {
             <span>{this.props.text}{prettyDate(this.state.timer)}</span>
         );
     }
+}
+
+RemainingTime.propTypes = {
+    start: React.PropTypes.instanceOf(Date),
+    end: React.PropTypes.instanceOf(Date),
+    text: React.PropTypes.string,
 };

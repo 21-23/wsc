@@ -9,9 +9,9 @@ const inntitialState = Immutable.fromJS({
 
 export default function gameReducer(state = inntitialState, action = {}) {
     switch (action.type) {
-    case ActionTypes.START_GAME:
-        return state.merge(action.payload);
-    default:
-        return state;
+        case ActionTypes.START_GAME:
+            return state.merge(action.payload);
+        default:
+            return state;
     }
 }

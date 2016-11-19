@@ -10,9 +10,6 @@ import Timer from './remainingTime';
 //constants
 import Constants from 'constants';
 
-//helpers
-import { prettyDate } from 'helpers/date';
-
 export default class Time extends PureComponent {
     render() {
         const { start, end } = this.props;
@@ -37,4 +34,9 @@ export default class Time extends PureComponent {
             </div>
         );
     }
+}
+
+Time.propTypes = {
+    start: React.PropTypes.instanceOf(Date),
+    end: React.PropTypes.instanceOf(Date),
 };

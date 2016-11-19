@@ -13,7 +13,7 @@ var defineProcessPlugin = new Webpack.DefinePlugin({
     }
 });
 var uglifyPlugin = new Webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false }
+    compress: { warnings: false }
 });
 
 function isProduction() {

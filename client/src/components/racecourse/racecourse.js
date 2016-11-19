@@ -51,4 +51,10 @@ export default class Racecourse extends PureComponent {
             </div>
         );
     }
+}
+
+Racecourse.propTypes = {
+    players: React.PropTypes.any,
+    start: React.PropTypes.instanceOf(Date),
+    end: React.PropTypes.instanceOf(Date),
 };

@@ -4,6 +4,7 @@ import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { Map } from 'immutable';
 
 //components
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -43,5 +44,11 @@ const applicationSelector = createStructuredSelector({
     start,
     end,
 });
+
+Application.propTypes = {
+    playersList: React.PropTypes.any,
+    start: React.PropTypes.instanceOf(Date),
+    end: React.PropTypes.instanceOf(Date),
+};
 
 export default connect(applicationSelector)(Application);

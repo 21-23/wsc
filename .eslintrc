@@ -13,7 +13,7 @@
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
         // enable additional rules
-        "indent": [2, 4],
+        "indent": [2, 4, { "SwitchCase": 1 }],
         "semi": ["error", "always"],
   }
 }
