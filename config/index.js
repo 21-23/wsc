@@ -1,5 +1,10 @@
-const nconf = require('nconf');
+/* eslint-disable no-console*/
+//Use console instead of CLI here to avoid circular dependencies
+import nconf from 'nconf';
 
-module.exports = nconf.argv()
-                      .env()
-                      .file({ file: './config.json' });
+const config = nconf.argv().env();
+config.defaults({
+    PORT: 3000
+});
+
+export default config;

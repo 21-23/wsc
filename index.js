@@ -2,10 +2,10 @@ import http from 'http';
 import app from './server/server';
 import { initializaeServers } from './server/web_socket/';
 import { initializebot } from 'server/telegram';
+import config from 'config';
 import cli from './server/cli';
 
-const port = process.env.PORT || 3000;
-
+const port = config.get('PORT');
 app.set('port', port);
 
 const server = http.createServer(app);
@@ -18,7 +18,7 @@ server.on('error', function __onServerError(err){
     cli.log('*********************************');
 });
 
-server.on('listening', function __onListening(){
+server.on('listening', function __onListening() {
     cli.log(`Server ready on: ${port}`);
 
     initializaeServers({server});
