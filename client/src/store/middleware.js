@@ -1,7 +1,9 @@
-import { call, fork, put } from 'redux-saga/effects'
+import { call, fork, put } from 'redux-saga/effects';
+import { getUrl } from 'helpers/web_socket_helpers';
 
 function createWebsocket() {
-    const source = new WebSocket(`ws://${window.location.host}/master`);
+    const url = getUrl(window.location);
+    const source = new WebSocket(url);
     let promise;
 
     source.onmessage = event => {
@@ -16,11 +18,11 @@ function createWebsocket() {
             if(!promise) {
                 promise = {};
                 promise.promise =
-                    new Promise(resolve => promise.resolve = resolve)
+                    new Promise(resolve => promise.resolve = resolve);
             }
             return promise.promise;
         }
-    }
+    };
 }
 
 function* watchMessages(msgSource) {
@@ -28,12 +30,12 @@ function* watchMessages(msgSource) {
     while(message) {
         yield put(message);
         console.log(message);
-        message = yield call(msgSource.nextMessage)
+        message = yield call(msgSource.nextMessage);
     }
 }
 
 
 export default function* webSocketWatcher() {
     const msgSource = yield call(createWebsocket);
-    yield fork(watchMessages, msgSource)
+    yield fork(watchMessages, msgSource);
 }
