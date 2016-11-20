@@ -6,3 +6,6 @@ export function end(state) {
     return state.getIn(['game', 'end']);
 }
 
+export function isGameStarted(state) {
+    return state.getIn(['game', 'isGameStarted']);
+}

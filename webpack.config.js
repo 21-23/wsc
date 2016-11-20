@@ -27,7 +27,7 @@ if (isProduction()) {
 }
 
 module.exports = {
-    entry: "./client/src/index.js",
+    entry: ['babel-polyfill', './client/src/index.js'],
     output: {
         path: __dirname + '/client/dist',
         filename: "scripts/scripts.bundle.js"
