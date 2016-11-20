@@ -1,4 +1,4 @@
-import { call, fork } from 'redux-saga/effects'
+import { call, fork, put } from 'redux-saga/effects'
 
 function createWebsocket() {
     const source = new WebSocket(`ws://${window.location.host}/master`);
@@ -26,7 +26,7 @@ function createWebsocket() {
 function* watchMessages(msgSource) {
     let message = yield call(msgSource.nextMessage);
     while(message) {
-        // yield put(action);
+        yield put(message);
         console.log(message);
         message = yield call(msgSource.nextMessage)
     }

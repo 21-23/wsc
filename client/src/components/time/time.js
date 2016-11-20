@@ -12,7 +12,7 @@ import Constants from 'constants';
 
 export default class Time extends PureComponent {
     render() {
-        const { start, end } = this.props;
+        const { end } = this.props;
         const iconStyles = {
             fontSize: Constants.TIMER_ICONS_SIZE
         };
@@ -27,7 +27,6 @@ export default class Time extends PureComponent {
                         timelapse
                     </FontIcon>
                     <Timer
-                        start={start}
                         end={end}
                     />
                 </div>

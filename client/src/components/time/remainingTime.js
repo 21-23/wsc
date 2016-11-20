@@ -9,9 +9,9 @@ import { prettyDate } from 'helpers/date';
 export default class RemainingTime extends PureComponent {
     constructor(props) {
         super(props);
-        const { start, end } = this.props;
+        const { end } = this.props;
         this.state = {
-            timer: end - start
+            timer: end - new Date()
         };
     }
     componentDidMount() {

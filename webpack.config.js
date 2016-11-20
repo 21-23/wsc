@@ -35,6 +35,9 @@ module.exports = {
     devtool: isProduction() ? null : 'source-map',
     resolve: {
         root: path.join(__dirname, 'client/src/'),
+        alias: {
+            'shared': path.join(__dirname, 'shared/')
+        },
     },
     module: {
         loaders: [

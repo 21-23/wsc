@@ -41,7 +41,6 @@ export default class Racecourse extends PureComponent {
                 <div className="header-container">
                     <Header />
                     <Time
-                        start={start}
                         end={end}
                     />
                 </div>
