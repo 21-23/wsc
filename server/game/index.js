@@ -1,5 +1,5 @@
 import store from 'server/store';
-import { players, playerTokenMap } from 'server/selectors/game_selectors';
+import { players, playerTokenMap } from 'server/selectors/players_selectors';
 import { challengeAccepted } from 'server/game/tasks/accept_challenge';
 import { chooseAndPlay } from 'server/game/utils';
 import ProtocolMessages from 'server/constants/protocol_messages';

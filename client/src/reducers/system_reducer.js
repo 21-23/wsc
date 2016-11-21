@@ -11,17 +11,17 @@ const TWO_HOURS = 2*60*60*1000;
 
 export default function systemReducer(state = intitialState, action = {}) {
     switch (action.type) {
-        case SharedActionTypes.FETCH_STORE:
+        case SharedActionTypes.FETCH_STORE: {
             const system = action.payload.system;
-
+            //TODO: merge all payload
             return state.withMutations((mutable) => {
                 //todo: use not object date
-               mutable.set('start', new Date(system.startTime));
-               mutable.set('end', new Date(system.startTime + TWO_HOURS));
-               mutable.set('isGameStarted', system.isGameStarted);
+                mutable.set('start', new Date(system.startTime));
+                mutable.set('end', new Date(system.startTime + TWO_HOURS));
+                mutable.set('isGameStarted', system.isGameStarted);
                //... players
             });
-
+        }
         case SharedActionTypes.START_GAME:
             return state.withMutations((mutable) => {
                 //todo: use not object date

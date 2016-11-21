@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux-immutable';
 
 //importing of reducers
-import game_reducer from 'server/reducers/game_reducer';
+import players_reducer from 'server/reducers/players_reducer';
 import system_reducer from 'server/reducers/system_reducer';
 
 export default combineReducers({
-    game: game_reducer,
+    player: players_reducer,
     system: system_reducer,
 });

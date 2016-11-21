@@ -1,16 +1,9 @@
 import { createSelector } from 'reselect';
 import { Map } from 'immutable';
 
-export function game (state) {
-    return state.get('game');
+export function players(state) {
+    return state.get('players');
 }
-
-export const players = createSelector(
-        [game],
-        function (gameState) {
-            return gameState.get('players');
-        }
-);
 
 export const playerTokenMap = createSelector(
         [players],
