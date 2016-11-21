@@ -3,7 +3,7 @@ const vorpal = require('vorpal')();
 import store from 'server/store';
 
 import SystemActions from 'server/actions/system_actions';
-import { isGameStarted } from 'server/selectors/system_selectors';
+import { isGameStarted } from 'shared/selectors/system_selectors';
 
 import config from 'config';
 

@@ -13,7 +13,7 @@ import Racecourse from 'components/racecourse/racecourse';
 import Spinner from  'components/spinner/spinner';
 
 //selectors
-import { end, isGameStarted } from 'selectors/system_selectors';
+import { end, isGameStarted } from 'shared/selectors/system_selectors';
 import { playersList } from 'selectors/players_selectors';
 
 class Application extends Component {
@@ -46,8 +46,8 @@ const applicationSelector = createStructuredSelector({
 });
 
 Application.propTypes = {
-    isGameStarted: React.PropTypes.bool,
-    playersList: React.PropTypes.any,
+    isGameStarted: React.PropTypes.any,
+    playersList: React.PropTypes.instanceOf(Map),
     end: React.PropTypes.instanceOf(Date),
 };
 

@@ -3,8 +3,9 @@ import Immutable from 'immutable';
 import ActionTypes from 'server/constants/action_types/system_action_types.js';
 
 const inntitialState = Immutable.fromJS({
-    startTime: null,
     isGameStarted: false,
+    start: null,
+    end: null,
 });
 
 export default function gameReducer(state = inntitialState, action = {}) {

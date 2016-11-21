@@ -4,7 +4,8 @@ import nconf from 'nconf';
 
 const config = nconf.argv().env();
 config.defaults({
-    PORT: 3000
+    PORT: 3000,
+    duration: 2 * 60 * 60 * 1000, //game duration
 });
 
 export default config;

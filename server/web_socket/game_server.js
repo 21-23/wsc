@@ -4,7 +4,7 @@ import cli from 'server/cli';
 import messages from 'server/constants/messages';
 import defaultVerifyClient from 'server/utils/verify_client';
 import store from 'server/store';
-import SystemSelectors from 'server/selectors/system_selectors';
+import * as SystemSelectors from 'shared/selectors/system_selectors';
 import { isGameMessage } from 'server/validators/message_validator';
 import { generate as generateID } from 'shortid';
 import { parseMessage } from 'server/helpers/message';
