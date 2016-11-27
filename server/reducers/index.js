@@ -5,6 +5,6 @@ import players_reducer from 'server/reducers/players_reducer';
 import system_reducer from 'server/reducers/system_reducer';
 
 export default combineReducers({
-    player: players_reducer,
+    players: players_reducer,
     system: system_reducer,
 });

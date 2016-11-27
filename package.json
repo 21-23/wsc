@@ -9,8 +9,9 @@
   "scripts": {
     "build": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build-prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "start": "cross-env NODE_PATH=./ NODE_ENV=development nodemon --exec npm run babel-node -- index.js",
-    "start-prod": "npm run build-prod && npm run start",
+    "backend": "cross-env NODE_PATH=./ nodemon --exec npm run babel-node -- --inspect index.js",
+    "start": "cross-env NODE_ENV=development npm run backend",
+    "start-prod": "npm run build-prod && cross-env NODE_ENV=production npm run backend",
     "stop": "pm2 kill",
     "postinstall": "npm dedupe",
     "babel-node": "babel-node --plugins=transform-es2015-modules-commonjs",
@@ -68,7 +69,7 @@
     "stylus-loader": "^2.1.1",
     "telebot": "^1.0.6",
     "url-loader": "^0.5.7",
-    "uws": "^0.10.0",
+    "uws": "^0.11.1",
     "vorpal": "^1.11.4",
     "webpack": "^1.13.2"
   }
