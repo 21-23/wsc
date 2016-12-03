@@ -25,6 +25,13 @@ if(env === 'development' || env !== 'production' && env !== 'staging') {
       });
 
     vorpal
+        .command('stop', 'stop game')
+        .action(function(args, callback) {
+            SystemActions.finishGame();
+            callback();
+        });
+
+    vorpal
       .command('startAt', 'get game start')
       .action(function(args, callback) {
           callback();

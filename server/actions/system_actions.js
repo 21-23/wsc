@@ -23,6 +23,18 @@ export function startGame () {
     return false;
 }
 
+export function finishGame () {
+    const state = store.getState();
+    const isGameStarted = SystemSelectors.isGameStarted(state);
+
+    if(isGameStarted) {
+        store.dispatch({
+            type: ActionTypes.FINISH_GAME,
+        });
+    }
+}
+
 export default {
     startGame,
+    finishGame,
 };

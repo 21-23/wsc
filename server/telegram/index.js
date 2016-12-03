@@ -20,8 +20,9 @@ export function initializebot() {
         },
     });
 
-    bot.connect();
-
     bot.on('/stat', (msg) => controller.stat(bot, msg));
     bot.on('/start', (msg) => controller.start(bot, msg));
+    bot.on('/finish', (msg) => controller.finish(bot, msg));
+
+    bot.connect();
 }

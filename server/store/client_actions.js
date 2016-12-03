@@ -7,4 +7,5 @@ export default {
     [GameActionTypes.PLAYER_GET_TASK]:null,
     [GameActionTypes.PLAYER_WIN]: null,
     [SystemActions.START_GAME]: null,
+    [SystemActions.FINISH_GAME]: null,
 };
