@@ -1,3 +1,8 @@
 {
-    "ignore": ["client", ".github"]
+    "ignore": ["client", ".github"],
+    "watch": [
+        "server/",
+        "shared/",
+        "config/"
+    ]
 }
