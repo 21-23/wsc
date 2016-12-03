@@ -52,19 +52,8 @@ if(env === 'development' || env !== 'production' && env !== 'staging') {
     cli = vorpal.delimiter('wsc$').show();
 }
 
-if(env === 'staging') {
+if(env === 'production') {
     cli = console;
-}
-
-if (env === 'production') {
-    const noop = () => {};
-
-    cli = Object.keys(console).reduce((R, key) => {
-        if(typeof console[key] === 'function') { //eslint-disable-line
-            R[key] = noop;
-        }
-        return R;
-    }, {});
 }
 
 export default cli;
