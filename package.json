@@ -45,6 +45,7 @@
     "immutable": "^3.8.1",
     "immutable-devtools": "0.0.7",
     "material-ui": "^0.15.4",
+    "mongoose": "^4.7.0",
     "morgan": "^1.7.0",
     "nconf": "^0.8.4",
     "nodemon": "^1.10.2",
