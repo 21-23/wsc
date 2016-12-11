@@ -1,60 +1,9 @@
 import store from 'server/store';
 import { bindActionCreators as bindAction } from 'redux';
-import GameActionTypes from 'server/constants/action_types/game_action_types';
+import * as GameActionCreators from 'server/action_creators/game_action_creators.js';
 
-function connectNewPlayerActionCreator(player) {
-    return {
-        type: GameActionTypes.PLAYER_CONNECTED,
-        payload: {
-            [player.id]: player,
-        }
-    };
-}
-
-function playerWinActionCreator(player, lnk) {
-    return {
-        type: GameActionTypes.PLAYER_WIN,
-        payload: {
-            [player.id]: {
-                finish: Date.now(),
-                lnk: lnk,
-            }
-        }
-    };
-}
-
-function playerSolveTaskActionCreator(player) {
-    return {
-        type: GameActionTypes.PLAYER_SOLVE_TASK,
-        payload: {
-            [player.id]: {
-                currentTask: {},
-                taskSolved: player.taskSolved + 1,
-            }
-        }
-    };
-}
-
-function playerGetTaskActionCreator(player, currentTask){
-    return {
-        type: GameActionTypes.PLAYER_GET_TASK,
-        payload: {
-            [player.id]: {
-                currentTask
-            }
-        }
-    };
-}
-
-const playerCloseConnectionActionCreator = (soketId) => ({
-    type: GameActionTypes.PLAYER_CLOSE_CONNECTION,
-    payload: {
-        soketId,
-    },
-});
-
-export const playerCloseConnetction = bindAction(playerCloseConnectionActionCreator, store.dispatch);
-export const playerGetTask = bindAction(playerGetTaskActionCreator, store.dispatch);
-export const playerSolveTask = bindAction(playerSolveTaskActionCreator, store.dispatch);
-export const connectNewPlayer = bindAction(connectNewPlayerActionCreator, store.dispatch);
-export const playerWin = bindAction(playerWinActionCreator, store.dispatch);
+export const playerCloseConnetction = bindAction(GameActionCreators.playerCloseConnectionActionCreator, store.dispatch);
+export const playerGetTask = bindAction(GameActionCreators.playerGetTaskActionCreator, store.dispatch);
+export const playerSolveTask = bindAction(GameActionCreators.playerSolveTaskActionCreator, store.dispatch);
+export const connectNewPlayer = bindAction(GameActionCreators.connectNewPlayerActionCreator, store.dispatch);
+export const playerWin = bindAction(GameActionCreators.playerWinActionCreator, store.dispatch);

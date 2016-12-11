@@ -6,10 +6,19 @@ export function players(state) {
 }
 
 export const playerTokenMap = createSelector(
-        [players],
-        function (players) {
-            return players.reduce(function(R, value) {
-                return R.set(value.get('token'), value.get('id'));
-            }, Map());
-        }
+    [players],
+    function (players) {
+        return players.reduce(function(R, value) {
+            return R.set(value.get('token'), value.get('id'));
+        }, Map());
+    }
+);
+
+export const playerSocket = createSelector(
+    [players],
+    function (players) {
+        return players.reduce(function(R, value) {
+            return R.set(value.get('socketId'), value.get('id'));
+        }, Map());
+    }
 );

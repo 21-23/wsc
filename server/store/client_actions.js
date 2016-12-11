@@ -6,6 +6,7 @@ export default {
     [GameActionTypes.PLAYER_SOLVE_TASK]: null,
     [GameActionTypes.PLAYER_GET_TASK]:null,
     [GameActionTypes.PLAYER_WIN]: null,
+    [GameActionTypes.REMOVE_PLAYER]: null,
     [SystemActions.START_GAME]: null,
     [SystemActions.FINISH_GAME]: null,
 };

@@ -10,7 +10,7 @@ export function challengeAccepted(message, socket){
         socket.close();
     }
 
-    const player = createPlayer(message.name);
+    const player = createPlayer(message.name, socket._id);
     const firstTask = getFirstTask();
 
     socket.send(playerAcceptChallange(player.token, firstTask));
