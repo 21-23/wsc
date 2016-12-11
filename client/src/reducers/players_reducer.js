@@ -8,7 +8,7 @@ const intitialState = immutable.fromJS({
 
 export default function playersReducer(state = intitialState, action = {}) {
     switch (action.type) {
-        case 'RANDOM_PLZ':
+        case 'RANDOM_PLZ': {
             const number = `${Math.floor(Math.random() * state.get('list').size)}`;
             const progress = state.getIn(['list', number, 'progress']);
             if (progress === 3) {
@@ -19,7 +19,7 @@ export default function playersReducer(state = intitialState, action = {}) {
                 mutable.setIn(['list', number, 'progress'], progress + 1);
                 mutable.setIn(['list', number, 'progressTime'], Date.now());
             });
-
+        }
         default:
             return state;
     }
