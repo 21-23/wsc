@@ -8,6 +8,7 @@ import * as SystemSelectors from 'shared/selectors/system_selectors';
 import { isGameMessage } from 'server/validators/message_validator';
 import { generate as generateID } from 'shortid';
 import { parseMessage } from 'server/helpers/message';
+import { playerCloseConnetction } from 'server/actions/game_actions';
 
 import { play } from 'server/game';
 
@@ -34,6 +35,7 @@ export function createGameServer({server, verifyClient = defaultVerifyClient}) {
                 if(isGameMessage(parsedMessage)) {
                     play(parsedMessage, socket);
                 } else {
+                    socket.close();
                   // We should somehow process frod messages from players
                 }
 
@@ -43,7 +45,7 @@ export function createGameServer({server, verifyClient = defaultVerifyClient}) {
         });
 
         socket.on('close', function (){
-
+            playerCloseConnetction(socket._id);
         });
 
 

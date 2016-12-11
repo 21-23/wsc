@@ -5,7 +5,7 @@ export function parseMessage(obj) {
         const result = JSON.parse(obj);
         return typeof result === 'object' ? result : null;
     } catch (err) {
-        cli.log('Wrong message recived');
+        cli.log('Error while parsing JSON');
         return null;
     }
 }

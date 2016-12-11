@@ -3,6 +3,7 @@ const ActionTypes = {
     PLAYER_SOLVE_TASK: 'player solve task',
     PLAYER_GET_TASK: 'player get task',
     PLAYER_WIN: 'player win',
+    PLAYER_CLOSE_CONNECTION: 'player close connection',
 };
 
 export default ActionTypes;

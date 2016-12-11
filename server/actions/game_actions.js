@@ -36,7 +36,7 @@ function playerSolveTaskActionCreator(player) {
 }
 
 function playerGetTaskActionCreator(player, currentTask){
-    return{
+    return {
         type: GameActionTypes.PLAYER_GET_TASK,
         payload: {
             [player.id]: {
@@ -46,6 +46,14 @@ function playerGetTaskActionCreator(player, currentTask){
     };
 }
 
+const playerCloseConnectionActionCreator = (soketId) => ({
+    type: GameActionTypes.PLAYER_CLOSE_CONNECTION,
+    payload: {
+        soketId,
+    },
+});
+
+export const playerCloseConnetction = bindAction(playerCloseConnectionActionCreator, store.dispatch);
 export const playerGetTask = bindAction(playerGetTaskActionCreator, store.dispatch);
 export const playerSolveTask = bindAction(playerSolveTaskActionCreator, store.dispatch);
 export const connectNewPlayer = bindAction(connectNewPlayerActionCreator, store.dispatch);
