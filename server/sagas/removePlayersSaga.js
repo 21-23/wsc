@@ -1,6 +1,6 @@
 import { takeEvery } from 'redux-saga';
 import { take, put, select, race, fork, cancel } from 'redux-saga/effects';
-import GameActionTypes from 'server/constants/action_types/game_action_types';
+import GameActionTypes from 'shared/action_types/game_action_types';
 import SystemActionTypes from 'server/constants/action_types/system_action_types';
 import { playerSocket } from 'server/selectors/players_selectors';
 import { removePlayerActionCreator as removePlayer } from 'server/action_creators/game_action_creators';

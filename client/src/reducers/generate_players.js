@@ -54,10 +54,10 @@ export default function generate() {
         const playerId = i;
 
         playersMap[playerId] = {};
-        playersMap[playerId].progress = Math.floor(Math.random() * 4);
+        playersMap[playerId].taskSolved = Math.floor(Math.random() * 4);
         playersMap[playerId].name = players[i];
         playersMap[playerId].id = playerId;
-        playersMap[playerId].progressTime = Date.now() + i;
+        playersMap[playerId].end = Date.now() + i;
     }
     return playersMap;
 }

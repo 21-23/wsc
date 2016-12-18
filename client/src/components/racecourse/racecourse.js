@@ -18,12 +18,12 @@ export default class Racecourse extends PureComponent {
         const races = [];
 
         players = players.sort((a, b) => {
-            return a.get('progressTime') - b.get('progressTime') ;
+            return a.get('end') - b.get('end') ;
         });
 
         for (let i = 0; i < count; i ++) {
             const racePlayers = players.filter((player) => {
-                return player.get('progress') === i;
+                return player.get('taskSolved') === i;
             });
 
             races.push(<Race key={i} index={i} players={racePlayers} />);
@@ -33,7 +33,7 @@ export default class Racecourse extends PureComponent {
     }
 
     render() {
-        const { players, start, end } = this.props;
+        const { players, end } = this.props;
         const races = this.races(players, Constants.TASKS_LENGTH);
 
         return (

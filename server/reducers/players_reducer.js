@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-import GameActionTypes from 'server/constants/action_types/game_action_types';
+import GameActionTypes from 'shared/action_types/game_action_types';
 const inntitialState = Map();
 
 export default function gameReducer(state = inntitialState, action = {}) {

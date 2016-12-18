@@ -1,4 +1,4 @@
-import GameActionTypes from 'server/constants/action_types/game_action_types';
+import GameActionTypes from 'shared/action_types/game_action_types';
 import SystemActions from 'server/constants/action_types/system_action_types';
 
 export default {

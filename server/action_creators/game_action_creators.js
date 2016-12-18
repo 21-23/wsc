@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import GameActionTypes from 'server/constants/action_types/game_action_types';
+import GameActionTypes from 'shared/action_types/game_action_types';
 
 export const connectNewPlayerActionCreator = createAction(GameActionTypes.PLAYER_CONNECTED, player => ({  [player.id]: player }));
 
