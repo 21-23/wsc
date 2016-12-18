@@ -43,6 +43,6 @@ export default class RemainingTime extends PureComponent {
 
 RemainingTime.propTypes = {
     start: React.PropTypes.instanceOf(Date),
-    end: React.PropTypes.instanceOf(Date),
+    end: React.PropTypes.any,
     text: React.PropTypes.string,
 };

@@ -48,7 +48,7 @@ const applicationSelector = createStructuredSelector({
 Application.propTypes = {
     isGameStarted: React.PropTypes.any,
     playersList: React.PropTypes.instanceOf(Map),
-    end: React.PropTypes.instanceOf(Date),
+    end: React.PropTypes.any,
 };
 
 export default connect(applicationSelector)(Application);

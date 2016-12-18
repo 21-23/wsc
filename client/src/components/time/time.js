@@ -37,5 +37,5 @@ export default class Time extends PureComponent {
 
 Time.propTypes = {
     start: React.PropTypes.instanceOf(Date),
-    end: React.PropTypes.instanceOf(Date),
+    end: React.PropTypes.any,
 };
