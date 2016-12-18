@@ -22,6 +22,7 @@ export function playerSolveTaskActionCreator(player) {
             [player.id]: {
                 currentTask: {},
                 taskSolved: player.taskSolved + 1,
+                end: Date.now(),
             }
         }
     };
