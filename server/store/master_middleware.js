@@ -7,8 +7,8 @@ export function createRemoteDispatchMiddleware(getRemotes, actions) {
             let msg = '';
 
             const descriptor = actions[action.type];
-            if(descriptor && descriptor.onAction) {
-                msg = JSON.stringify(descriptor.onAction(action));
+            if(descriptor && typeof descriptor === 'function') {
+                msg = JSON.stringify(descriptor(action));
             } else {
                 msg = JSON.stringify(action);
             }
