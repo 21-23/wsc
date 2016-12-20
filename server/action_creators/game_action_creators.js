@@ -9,6 +9,7 @@ export function playerWinActionCreator(player, lnk) {
         payload: {
             [player.id]: {
                 finish: Date.now(),
+                taskSolved: player.taskSolved + 1,
                 lnk: lnk,
             }
         }
