@@ -22,12 +22,16 @@ export default function playersReducer(state = intitialState, action = {}) {
                 mutable.setIn(['list', number, 'end'], Date.now());
             });
         }
+        case GameActionTypes.PLAYER_WIN:
         case GameActionTypes.PLAYER_SOLVE_TASK:
         case GameActionTypes.PLAYER_CONNECTED: {
             return state.mergeDeepIn(['list'], action.payload);
         }
         case SystemActionTypes.FETCH_STORE: {
             return state.mergeIn(['list'], action.payload.players);
+        }
+        case GameActionTypes.REMOVE_PLAYER: {
+            return state.deleteIn(['list', action.payload.playerId]);
         }
         default:
             return state;
