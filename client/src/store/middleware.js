@@ -29,7 +29,9 @@ function* watchMessages(msgSource) {
     let message = yield call(msgSource.nextMessage);
     while(message) {
         yield put(message);
-        console.log(message);
+        if (process.env.NODE_ENV !== 'production') {
+            console.log(message);
+        }
         message = yield call(msgSource.nextMessage);
     }
 }
