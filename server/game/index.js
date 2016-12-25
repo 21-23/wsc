@@ -1,5 +1,9 @@
 import store from 'server/store';
-import { players, playerTokenMap } from 'server/selectors/players_selectors';
+import {
+    players,
+    playerTokenMap,
+    playerSocket,
+} from 'server/selectors/players_selectors';
 import { challengeAccepted } from 'server/game/tasks/accept_challenge';
 import { chooseAndPlay } from 'server/game/utils';
 import ProtocolMessages from 'server/constants/protocol_messages';
@@ -17,6 +21,15 @@ export function play(message, socket) {
         }
     }
     if(message.command === ProtocolMessages.CHALLENGE_ACCEPTED) {
-        challengeAccepted(message, socket);
+        const state = store.getState();
+        const socketsMap = playerSocket(state);
+
+        const player = socketsMap.get(socket._id);
+
+        if (!player) {
+            challengeAccepted(message, socket);
+        } else {
+            socket.send('You already accepted the challenge');
+        }
     }
 }
