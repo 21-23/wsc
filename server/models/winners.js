@@ -5,7 +5,7 @@ const winner = new Schema({
         type: String,
         required: true
     },
-    githubnick: {
+    code: {
         type: String,
         required: true
     },
