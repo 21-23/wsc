@@ -35,7 +35,7 @@ export function solveTask(message, player, socket) {
     player = player.toJS();
     const taskData = player.currentTask;
     const currentTaskInd = tasks.findIndex(({name}) => taskData.name === name);
-    if(typeof message.answer !== 'undefined' && taskData.name) { //anwer can be 0 or false
+    if(typeof message.answer !== 'undefined' && taskData.name === message.command) { //anwer can be 0 or false
         const task = tasks[currentTaskInd];
         const result = task.solve(taskData.task, message.answer, taskData.binaryData);
 

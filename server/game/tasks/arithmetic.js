@@ -10,7 +10,7 @@ function solve({ values, sign }, answer) {
     return result === answer;
 }
 
-function start(){
+function start() {
     const sign = signs[Math.floor(Math.random() * signs.length)];
     const arr = Array.from({ length: 4 }, () => Math.floor(Math.random() * (MAX - MIN) + MIN));
 
