@@ -35,6 +35,7 @@ export function createGameServer({server, verifyClient = defaultVerifyClient}) {
                 if(isGameMessage(parsedMessage)) {
                     play(parsedMessage, socket);
                 } else {
+                    socket.send('it\'s not game message');
                     socket.close();
                   // We should somehow process frod messages from players
                 }

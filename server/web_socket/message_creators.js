@@ -3,7 +3,7 @@ import Messages from 'server/constants/messages';
 export function createWinMessage(lnk) {
     return JSON.stringify({
         message: Messages.WIN,
-        link: lnk,
+        secretCode: lnk,
     });
 }
 
