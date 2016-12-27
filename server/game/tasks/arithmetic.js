@@ -7,7 +7,7 @@ function solve({ values, sign }, answer) {
     const result = values.reduce((previous, current) => eval(`${previous}${sign}${current}`));
 
     //todo: delete
-    return result === answer || answer === 0;
+    return result === answer;
 }
 
 function start(){

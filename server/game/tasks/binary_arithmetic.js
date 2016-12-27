@@ -6,7 +6,7 @@ function solve({ bits }, answer, binaryData) {
     const summ = array.reduce((a, b) => a + b, 0);
 
     //todo: for tests
-    return summ === answer || answer === 0;
+    return summ === answer;
 }
 
 function start() {
