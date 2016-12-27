@@ -14,7 +14,7 @@ function* saveWinner(action) {
     const playerId = Object.keys(payload).pop();
     const { finish, lnk } = payload[playerId];
 
-    const time = gameStart - finish;
+    const time = finish - gameStart;
 
     const winner = new WinnerModel({
         code: lnk,
