@@ -1,4 +1,4 @@
-import WinnerModel from 'server/models/store';
+import WinnerModel from 'server/models/winners';
 import GameActionTypes from 'shared/action_types/game_action_types';
 import { call, select } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga';

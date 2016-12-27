@@ -3,7 +3,6 @@ import mongoose, { Schema } from 'mongoose';
 const winner = new Schema({
     nickname: {
         type: String,
-        required: true
     },
     code: {
         type: String,
