@@ -16,14 +16,14 @@ export function wrongAnswerMessage(taskName){
 export function solveTaskMessage(nextTaskName) {
     return JSON.stringify({
         message: 'You solve task',
-        nextTask: nextTaskName,
+        next: nextTaskName,
     });
 }
 
 export function playerAcceptChallange(token, task){
     return JSON.stringify({
         message: Messages.ACCEPTED,
-        next: task,
+        next: task.name,
         token,
     });
 }
