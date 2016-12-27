@@ -12,14 +12,14 @@ function* saveWinner(action) {
     const gameStart = yield select(startSelector);
     const { payload } = action;
     const playerId = Object.keys(payload).pop();
-    const { finish, code = lnk } = payload[playerId];
+    const { finish, lnk } = payload[playerId];
 
     const time = gameStart - finish;
 
     const winner = new WinnerModel({
-        nickname,
-        code,
+        code: lnk,
         time,
     });
+
     yield call(winner.save);
 }
