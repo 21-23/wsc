@@ -30,7 +30,7 @@ export function createGameServer({server, verifyClient = defaultVerifyClient}) {
 
             const state = store.getState();
             const isGameStarted = SystemSelectors.isGameStarted(state);
-            cli.log(`Message recived`);
+            cli.log(`Message recived ${JSON.stringify(parsedMessage)}`);
             if (isGameStarted) {
                 if(isGameMessage(parsedMessage)) {
                     play(parsedMessage, socket);
@@ -48,7 +48,6 @@ export function createGameServer({server, verifyClient = defaultVerifyClient}) {
         socket.on('close', function (){
             playerCloseConnetction(socket._id);
         });
-
 
     });
 

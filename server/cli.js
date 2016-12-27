@@ -10,7 +10,7 @@ import config from 'config';
 let cli = null;
 const env = config.get('NODE_ENV');
 
-if(env === 'development' || env !== 'production' && env !== 'staging') {
+if(env === 'development' || env !== 'production') {
     vorpal
       .command('start', 'Start game')
       .action(function(args, callback) {

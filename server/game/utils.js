@@ -1,6 +1,5 @@
 import ProtocolMessages from 'server/constants/protocol_messages';
 import { winTask } from 'server/game/tasks/win';
-
 import {
   wrongAnswerMessage,
   solveTaskMessage,
@@ -14,8 +13,6 @@ import arithmetic from 'server/game/tasks/arithmetic';
 import bin_arithmetic from 'server/game/tasks/binary_arithmetic';
 
 const tasks = [arithmetic, bin_arithmetic];
-
-
 
 export function getFirstTask() {
     if (tasks) {
@@ -70,7 +67,7 @@ export function solveTask(message, player, socket) {
         if (newTaskInd !== player.taskSolved){
             //Player try to get task to early
             process.nextTick(function() {
-                socket.send('To early cowboy');
+                socket.send('Smth is wrong with task name');
             });
         } else {
             const task = tasks[newTaskInd];
