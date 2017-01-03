@@ -10,7 +10,7 @@ import config from 'config';
 let cli = null;
 const env = config.get('NODE_ENV');
 
-if(env === 'development' || env !== 'production') {
+if(env !== 'production') {
     vorpal
       .command('start', 'Start game')
       .action(function(args, callback) {
@@ -25,15 +25,9 @@ if(env === 'development' || env !== 'production') {
       });
 
     vorpal
-        .command('stop', 'stop game')
-        .action(function(args, callback) {
-            SystemActions.finishGame();
-            callback();
-        });
-
-    vorpal
-      .command('startAt', 'get game start')
+      .command('stop', 'stop game')
       .action(function(args, callback) {
+          SystemActions.finishGame();
           callback();
       });
 
@@ -49,12 +43,12 @@ if(env === 'development' || env !== 'production') {
       });
 
     vorpal
-        .command('config')
-        .action(function(args, callback){
-            this.log('Base config:');
-            this.log('env', config.get('NODE_ENV'));
-            callback();
-        });
+      .command('config')
+      .action(function(args, callback){
+          this.log('Base config:');
+          this.log('env', config.get('NODE_ENV'));
+          callback();
+      });
 
     cli = vorpal.delimiter('wsc$').show();
 }
