@@ -8,12 +8,12 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "build-prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "watch": "webpack --config webpack.config.js --watch",
     "backend": "cross-env NODE_PATH=./ nodemon bootstrap",
     "start": "cross-env NODE_ENV=development npm run backend",
     "start-prod": "npm run build-prod && cross-env NODE_ENV=production npm run backend",
     "stop": "pm2 kill",
-    "postinstall": "npm dedupe",
     "babel-node": "babel-node --plugins=transform-es2015-modules-commonjs",
     "lint": "eslint -c .eslintrc ./server ./client"
   },
@@ -73,6 +73,10 @@
     "url-loader": "^0.5.7",
     "uws": "^0.14.1",
     "vorpal": "^1.11.4",
-    "webpack": "^1.13.2"
+    "webpack": "^2.3.3",
+    "webpack-merge": "^4.1.0"
+  },
+  "devDependencies": {
+    "webpack-notifier": "^1.5.0"
   }
 }
