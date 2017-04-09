@@ -10,5 +10,5 @@ export default function*() {
 function* saveStore() {
     const state = yield select(store => store.toJS());
     const stateObj = new StoreModel({stateStore: state});
-    yield call(stateObj.save);
+    yield call([stateObj, stateObj.save]);
 }

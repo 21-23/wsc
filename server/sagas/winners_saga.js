@@ -24,5 +24,5 @@ function* saveWinner(action) {
         time,
     });
 
-    yield call(winner.save);
+    yield call([winner, winner.save]);
 }
