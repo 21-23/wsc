@@ -71,7 +71,7 @@
     "stylus-loader": "^2.1.1",
     "telebot": "^1.0.6",
     "url-loader": "^0.5.7",
-    "uws": "^0.11.1",
+    "uws": "^0.14.1",
     "vorpal": "^1.11.4",
     "webpack": "^1.13.2"
   }
