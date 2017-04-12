@@ -25,7 +25,7 @@ class Application extends Component {
             end,
         } = this.props;
         const racecourse = <Racecourse end={end} players={playersList}/>;
-        const spinner = <Spinner/>;
+        const spinner = <Spinner>Please wait. Game will start shortly.</Spinner>;
         const game = isGameStarted ? racecourse : spinner;
 
         return (
