@@ -5,7 +5,7 @@ import setErrorHandlers from 'server/utils/server_error_handling';
 
 const app = express();
 
-if(app.get('env') === 'development'){
+if(app.get('env') === 'development') {
     const logger = require('morgan');
     app.use(logger('dev'));
 }
