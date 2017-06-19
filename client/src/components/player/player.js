@@ -13,7 +13,6 @@ const iconStyle = {
 };
 
 export default class Player extends PureComponent {
-
     render () {
         const { name, position } = this.props;
         const isTopPlayer = position !== null && isWinner(position);

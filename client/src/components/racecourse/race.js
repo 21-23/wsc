@@ -3,7 +3,7 @@ import './_animation.styl';
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 //components
-import { PureComponent } from 'react';
+import { Component } from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import Player from 'components/player/player';
 //icons
@@ -11,7 +11,15 @@ import { names, icons } from './names_and_icons';
 //constants
 import Constants from 'consts';
 
-export default class Race extends PureComponent {
+export default class Race extends Component {
+    shouldComponentUpdate(nextProps) {
+        if (nextProps.players && this.props.players) {
+            return nextProps.players.count() !== this.props.players.count();
+        }
+
+        return true;
+    }
+
     render () {
         const { index, players } = this.props;
         const iconStyle = {

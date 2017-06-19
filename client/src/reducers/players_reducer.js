@@ -11,16 +11,19 @@ const intitialState = immutable.fromJS({
 export default function playersReducer(state = intitialState, action = {}) {
     switch (action.type) {
         case 'RANDOM_PLZ': {
-            const number = `${Math.floor(Math.random() * state.get('list').size)}`;
-            const progress = state.getIn(['list', number, 'taskSolved']);
-            if (progress === 3) {
-                return state;
-            }
+            if (process.env.NODE_ENV !== 'production') {
+                const number = `${Math.floor(Math.random() * state.get('list').size)}`;
+                const progress = state.getIn(['list', number, 'taskSolved']);
+                if (progress === 3) {
+                    return state;
+                }
 
-            return state.withMutations((mutable) => {
-                mutable.setIn(['list', number, 'taskSolved'], progress + 1);
-                mutable.setIn(['list', number, 'end'], Date.now());
-            });
+                return state.withMutations((mutable) => {
+                    mutable.setIn(['list', number, 'taskSolved'], progress + 1);
+                    mutable.setIn(['list', number, 'end'], Date.now());
+                });
+            }
+            break;
         }
         case GameActionTypes.PLAYER_WIN:
         case GameActionTypes.PLAYER_SOLVE_TASK:
