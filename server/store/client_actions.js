@@ -5,11 +5,20 @@ import {
   formatwin,
 } from 'server/formatters/action_formatters';
 
+import cli from 'cli';
+
+function warnOnFormatting(action) {
+
+    cli.warn(`[WSC WARN]: You send unformatted action ${action.type} to client.`, action);
+
+    return action;
+}
+
 export default {
     [GameActionTypes.PLAYER_CONNECTED]: formatPlayer,
-    [GameActionTypes.PLAYER_SOLVE_TASK]: null,
-    [GameActionTypes.PLAYER_WIN]: null,
-    [GameActionTypes.REMOVE_PLAYER]: null,
-    [SystemActions.START_GAME]: null,
+    [GameActionTypes.PLAYER_SOLVE_TASK]: warnOnFormatting,
+    [GameActionTypes.PLAYER_WIN]: warnOnFormatting,
+    [GameActionTypes.REMOVE_PLAYER]: warnOnFormatting,
+    [SystemActions.START_GAME]: warnOnFormatting,
     [SystemActions.FINISH_GAME]: formatwin,
 };
