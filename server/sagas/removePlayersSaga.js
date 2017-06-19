@@ -2,7 +2,7 @@ import { takeEvery } from 'redux-saga';
 import { take, put, select, race, fork, cancel } from 'redux-saga/effects';
 import GameActionTypes from 'shared/action_types/game_action_types';
 import SystemActionTypes from 'server/constants/action_types/system_action_types';
-import { playerSocket } from 'server/selectors/players_selectors';
+import { playerSocket, players } from 'server/selectors/players_selectors';
 import { removePlayerActionCreator as removePlayer } from 'server/action_creators/game_action_creators';
 
 export default function* disconnectionSaga() {
@@ -30,9 +30,16 @@ function* watchDisconnection() {
 
 function* closeConnection(action) {
     const socketIds = yield select(playerSocket);
-    const { payload: {soketId}} = action;
-    const player = socketIds.get(soketId);
-    if (player) {
-        yield put(removePlayer(player));
+    const { payload: { soketId }} = action;
+    const playerid = socketIds.get(soketId);
+
+    if (!playerid) {
+        return;        
     }
+
+    const player = yield select(players).get(playerid);
+
+    if (player.get('taskSolved') < 4) {
+        yield put(removePlayer(playerid));
+    }    
 }
