@@ -1,34 +1,33 @@
 import './_player.styl';
 import React from 'react';
-
 //components
 import FontIcon from 'material-ui/FontIcon';
 import { PureComponent } from 'react';
-
-import Constants from 'constants';
+import Constants from 'consts';
 import { isWinner } from 'helpers/game';
 
+const iconStyle = {
+    fontSize: 20,
+    position: 'absolute',
+    right: 15
+};
 
 export default class Player extends PureComponent {
 
-    render() {
+    render () {
         const { name, position } = this.props;
-        const iconStyle = {
-            fontSize: 20,
-            position: 'absolute',
-            right: 15
-        };
-        const top = position !== null && isWinner(position) ?
-            <FontIcon
-                className="material-icons"
-                style={iconStyle}
-                color={Constants.raspberry}
-            >
+        const isTopPlayer = position !== null && isWinner(position);
+        const Star = (
+            <FontIcon className="material-icons"
+                      style={iconStyle}
+                      color={Constants.raspberry}>
                 star
-            </FontIcon> : null;
+            </FontIcon>
+        );
+
         return (
             <div className="player">
-                { top }
+                {isTopPlayer && Star}
                 <span>{name}</span>
             </div>
         );

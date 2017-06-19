@@ -1,17 +1,15 @@
 import './_time.styl';
 
 import React from 'react';
-
 //components
 import { PureComponent } from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import Timer from './remainingTime';
-
 //constants
-import Constants from 'constants';
+import Constants from 'consts';
 
 export default class Time extends PureComponent {
-    render() {
+    render () {
         const { end } = this.props;
         const iconStyles = {
             fontSize: Constants.TIMER_ICONS_SIZE
@@ -20,15 +18,12 @@ export default class Time extends PureComponent {
         return (
             <div className="time-table">
                 <div className="timer">
-                    <FontIcon
-                        className="material-icons timer-icon"
-                        style={iconStyles}
-                        color={Constants.lightBlue}>
+                    <FontIcon className="material-icons timer-icon"
+                              style={iconStyles}
+                              color={Constants.lightBlue}>
                         timelapse
                     </FontIcon>
-                    <Timer
-                        end={end}
-                    />
+                    <Timer end={end}/>
                 </div>
             </div>
         );

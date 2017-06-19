@@ -1,4 +1,4 @@
-import Constants from 'constants';
+import Constants from 'consts';
 
 export function isWinner(position) {
     return position < Constants.WINNERS;

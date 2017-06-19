@@ -1,28 +1,27 @@
 import React from 'react';
-
 //components
 import { PureComponent } from 'react';
-
 //helpers
 import { prettyDate } from 'helpers/date';
 
 export default class RemainingTime extends PureComponent {
-    constructor(props) {
+    constructor (props) {
         super(props);
-        const { end } = this.props;
+
         this.state = {
-            timer: end - new Date()
+            timer: this.props.end - new Date()
         };
     }
-    componentDidMount() {
+
+    componentDidMount () {
         this.start();
     }
 
-    componentWillUnmount() {
+    componentWillUnmount () {
         this.stop();
     }
 
-    start() {
+    start () {
         this.interval = setInterval(() => {
             const now = Date.now();
 
@@ -36,11 +35,11 @@ export default class RemainingTime extends PureComponent {
         }, 1000);
     }
 
-    stop() {
+    stop () {
         clearInterval(this.interval);
     }
 
-    render() {
+    render () {
         return (
             <span>{this.props.text}{prettyDate(this.state.timer)}</span>
         );

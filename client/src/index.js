@@ -9,7 +9,6 @@ import store from 'store';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 applyHooks();
-
 injectTapEventPlugin();
 
 render(
