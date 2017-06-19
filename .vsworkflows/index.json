@@ -1,0 +1,10 @@
+{
+  "create-shared-reducer": {
+    "title": "Create Shared Reducer",
+    "commands": [
+      "vscode.prompt",
+      "fs.createFileFromTemplate:reducer.js:src/reducers/{arg}-reducer.js",
+      "vscode.open"
+    ]
+  }
+}
