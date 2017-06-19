@@ -23,7 +23,10 @@ module.exports = {
         rules: [
             {
                 test: /\.js?$/,
-                exclude: /(node_modules|bower_components)/,
+                include: [
+                    path.resolve(__dirname, 'client'),
+                    path.resolve(__dirname, 'node_modules', 'redux-action-minifier'),
+                ],
                 use: [
                     {
                         loader: 'babel-loader',

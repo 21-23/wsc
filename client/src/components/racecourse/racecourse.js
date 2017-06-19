@@ -10,7 +10,7 @@ import Race from './race';
 import Header from './header';
 
 //constants
-import Constants from 'constants';
+import Constants from '../../constants';
 
 export default class Racecourse extends PureComponent {
 

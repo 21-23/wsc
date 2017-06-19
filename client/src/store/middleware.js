@@ -1,5 +1,6 @@
 import { call, fork, put } from 'redux-saga/effects';
 import { getUrl } from 'helpers/web_socket_helpers';
+import { decompressor } from 'redux-action-minifier';
 
 function createWebsocket() {
     const url = getUrl(window.location);
@@ -17,8 +18,7 @@ function createWebsocket() {
         nextMessage() {
             if(!promise) {
                 promise = {};
-                promise.promise =
-                    new Promise(resolve => promise.resolve = resolve);
+                promise.promise = new Promise(resolve => promise.resolve = resolve);
             }
             return promise.promise;
         }
@@ -27,11 +27,16 @@ function createWebsocket() {
 
 function* watchMessages(msgSource) {
     let message = yield call(msgSource.nextMessage);
-    while(message) {
-        yield put(message);
+
+    while (message) {
+        const action = decompressor(message);
+
+        yield put(action);
+
         if (process.env.NODE_ENV !== 'production') {
             console.log(message);
         }
+
         message = yield call(msgSource.nextMessage);
     }
 }

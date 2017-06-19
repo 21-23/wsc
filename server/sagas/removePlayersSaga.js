@@ -32,7 +32,7 @@ function* closeConnection(action) {
     const socketIds = yield select(playerSocket);
     const { payload: {soketId}} = action;
     const player = socketIds.get(soketId);
-    if(player) {
+    if (player) {
         yield put(removePlayer(player));
     }
 }

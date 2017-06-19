@@ -6,7 +6,11 @@ import Application from 'components/application/application';
 import applyHooks from 'hooks';
 import store from 'store';
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
 applyHooks();
+
+injectTapEventPlugin();
 
 render(
     <Provider store={store}>
