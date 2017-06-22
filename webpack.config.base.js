@@ -25,6 +25,7 @@ module.exports = {
                 test: /\.js?$/,
                 include: [
                     path.resolve(__dirname, 'client'),
+                    path.resolve(__dirname, 'shared'),
                     path.resolve(__dirname, 'node_modules', 'redux-action-minifier'),
                 ],
                 use: [
