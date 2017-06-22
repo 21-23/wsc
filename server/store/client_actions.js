@@ -5,7 +5,7 @@ import {
   formatwin,
 } from 'server/formatters/action_formatters';
 
-import cli from 'cli';
+import cli from 'server/cli';
 
 function warnOnFormatting(action) {
 

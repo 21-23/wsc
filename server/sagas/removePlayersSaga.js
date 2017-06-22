@@ -37,9 +37,10 @@ function* closeConnection(action) {
         return;        
     }
 
-    const player = yield select(players).get(playerid);
+    const users = yield select(players);
+    const player = users.get(playerid);
 
-    if (player.get('taskSolved') < 4) {
+    if (player.get('taskSolved') < 3) {
         yield put(removePlayer(playerid));
     }    
 }
