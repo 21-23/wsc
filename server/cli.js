@@ -51,6 +51,10 @@ if(env !== 'production') {
       });
 
     cli = vorpal.delimiter('wsc$').show();
+
+
+    // eslint-disable-next-line
+    cli.warn = console.warn.bind(console);
 }
 
 if(env === 'production') {
