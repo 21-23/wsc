@@ -12,7 +12,7 @@
     "watch": "webpack --config webpack.config.js --watch",
     "backend": "cross-env NODE_PATH=./ nodemon bootstrap",
     "start": "cross-env NODE_ENV=development npm run backend",
-    "start-prod": "npm run build-prod && cross-env NODE_ENV=production npm run backend",
+    "start-prod": "npm run build:prod && cross-env NODE_ENV=production npm run backend",
     "stop": "pm2 kill",
     "babel-node": "babel-node --plugins=transform-es2015-modules-commonjs",
     "lint": "eslint -c .eslintrc ./server ./client",
