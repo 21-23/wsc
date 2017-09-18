@@ -12,7 +12,7 @@ function isAvailToControllBot(username) {
 const controller = {
     stat(bot, msg) {
         const state = store.getState();
-        const message = `${SystemSelectors.isGameStarted(state) ? 'Game started': 'Game did\'t started'}Connected ${players(state).size} players`;
+        const message = `${SystemSelectors.isGameStarted(state) ? 'Game started': 'Game did\'t started'}\nConnected ${players(state).size} players`;
         bot.sendMessage(msg.from.id, message);
     },
     start(bot, msg) {
@@ -23,7 +23,7 @@ const controller = {
         bot.sendMessage(msg.from.id, `Sorry @${msg.from.username}, game started before your command`);
     },
     finish(bot, msg) {
-        cli.log(`Game finished. Source of command telegram bot. Execute by @${msg.from.username}`);
+        cli.log(`Game finished.\n Source of command telegram bot.\n Execute by @${msg.from.username}`);
         finishGame();
         return bot.sendMessage(msg.from.id, `Thx @${msg.from.username}, you successfully finish the game`);
     }

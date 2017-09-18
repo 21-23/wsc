@@ -1,10 +1,10 @@
 const ActionTypes = {
-    PLAYER_CONNECTED: 'player connected',
-    PLAYER_SOLVE_TASK: 'player solve task',
-    PLAYER_GET_TASK: 'player get task',
-    PLAYER_WIN: 'player win',
-    PLAYER_CLOSE_CONNECTION: 'player close connection',
-    REMOVE_PLAYER: 'remove player',
+    PLAYER_CONNECTED: 'PLAYER_CONNECTED',
+    PLAYER_SOLVE_TASK: 'PLAYER_SOLVE_TASK',
+    PLAYER_GET_TASK: 'PLAYER_SOLVE_TASK',
+    PLAYER_WIN: 'PLAYER_WIN',
+    PLAYER_CLOSE_CONNECTION: 'PLAYER_CLOSE_CONNECTION',
+    REMOVE_PLAYER: 'REMOVE_PLAYER',
 };
 
 export default ActionTypes;

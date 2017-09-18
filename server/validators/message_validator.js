@@ -20,10 +20,10 @@ export function isGameCommand(message) {
 }
 
 export function isGameMessage(msg){
-    if(!msg) {
+    if (!msg) {
         return false;
     }
-    if(msg.command === ProtocolMessages.CHALLENGE_ACCEPTED){
+    if (msg.command === ProtocolMessages.CHALLENGE_ACCEPTED){
         return true;
     } else {
         return !!msg.token && isGameCommand(msg.command);

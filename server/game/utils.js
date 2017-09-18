@@ -12,6 +12,10 @@ import {
 import arithmetic from 'server/game/tasks/arithmetic';
 import bin_arithmetic from 'server/game/tasks/binary_arithmetic';
 
+import {
+    wrongTaskName
+} from 'server/web_socket/message_creators';
+
 const tasks = [arithmetic, bin_arithmetic];
 
 export function getFirstTask() {
@@ -67,7 +71,7 @@ export function solveTask(message, player, socket) {
         if (newTaskInd !== player.taskSolved){
             //Player try to get task to early
             process.nextTick(function() {
-                socket.send('Smth is wrong with task name');
+                socket.send(wrongTaskName());
             });
         } else {
             const task = tasks[newTaskInd];

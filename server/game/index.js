@@ -8,6 +8,11 @@ import { challengeAccepted } from 'server/game/tasks/accept_challenge';
 import { chooseAndPlay } from 'server/game/utils';
 import ProtocolMessages from 'server/constants/protocol_messages';
 
+import {
+    alreadyAccepted,
+    wrongToken,
+} from 'server/web_socket/message_creators';
+
 export function play(message, socket) {
     if(message.token && message.command !== ProtocolMessages.CHALLENGE_ACCEPTED) {
         const state = store.getState();
@@ -16,7 +21,7 @@ export function play(message, socket) {
             const player = players(state).get(playerId);
             return chooseAndPlay(message, player, socket);
         } else {
-            socket.send('woops, your token wrong');
+            socket.send(alreadyAccepted());
             return false;
         }
     }
@@ -29,7 +34,7 @@ export function play(message, socket) {
         if (!player) {
             challengeAccepted(message, socket);
         } else {
-            socket.send('You already accepted the challenge');
+            socket.send(wrongToken());
         }
     }
 }

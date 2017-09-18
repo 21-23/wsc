@@ -9,6 +9,8 @@ import store from 'server/store';
 
 let viewServer;
 
+const log = cli.log.bind(cli, '[WSC VIEW SERVER]');
+
 export function getConnections() {
     return viewServer && viewServer.clients || [];
 }
@@ -21,12 +23,12 @@ export function createViewServer({server, verifyClient = defaultVerifyClient}) {
     });
 
     wss.on('connection', function (socket) {
-        cli.log('Master connected. Fetch actual store');
+        log('Master connected. Fetch actual store');
 
         remoteDispatch(socket, sendState(store.getState().toJS()));
 
-        socket.on('message', function(){
-            cli.log('disconnect fake view socket');
+        socket.on('message', function() {
+            log('Disconnect fake view socket');
             this.close();
         });
     });

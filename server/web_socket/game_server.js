@@ -12,6 +12,9 @@ import { playerCloseConnetction } from 'server/actions/game_actions';
 
 import { play } from 'server/game';
 
+import {
+    notGameMessage,
+} from 'server/web_socket/message_creators';
 
 export function createGameServer({server, verifyClient = defaultVerifyClient}) {
     const wss = new WebSocketServer({
@@ -35,7 +38,7 @@ export function createGameServer({server, verifyClient = defaultVerifyClient}) {
                 if(isGameMessage(parsedMessage)) {
                     play(parsedMessage, socket);
                 } else {
-                    socket.send('it\'s not game message');
+                    socket.send(notGameMessage());
                     socket.close();
                   // We should somehow process frod messages from players
                 }
