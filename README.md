@@ -1,5 +1,7 @@
 # WebSocket Challenge
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/21-23/wsc.svg)](https://greenkeeper.io/)
+
 ## Solving the challenge:
 
 1. Create WebSocket and set binaryType = `"arraybuffer"`;
