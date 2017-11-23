@@ -3,7 +3,7 @@ import { startGame, finishGame } from 'server/actions/system_actions';
 import store from 'server/store';
 import * as SystemSelectors from 'shared/selectors/system_selectors';
 import { players } from 'server/selectors/players_selectors';
-const users = ['sirShastel', 'humanamburu'];
+const users = ['sirShastel', 'humanaburu'];
 
 function isAvailToControllBot(username) {
     return users.indexOf(username) !== -1;
