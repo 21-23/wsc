@@ -1,4 +1,9 @@
-export function players(state) {
-    const players = state.getIn(['players', 'list']);
-    return players && players.sort((a, b) => a.get('end') - b.get('end'));
-}
+import { List } from 'immutable';
+import { createSelector } from 'reselect';
+
+const playerList = (state) => state.getIn(['players', 'list'], List());
+
+export const players = createSelector([playerList], players => players.sortBy(
+    player => player.get('end'),
+    (a, b) => a - b)
+);

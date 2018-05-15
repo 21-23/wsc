@@ -1,10 +1,11 @@
 import { createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import webSocketWatcher from './middleware';
+
+import { createEpicMiddleware } from 'redux-observable';
+
 import reducers from 'reducers';
 
-const sagaMiddleware = createSagaMiddleware();
+import wsEpic from './wsEpic';
 
-export default applyMiddleware(sagaMiddleware)(createStore)(reducers);
+const epicMiddleware = createEpicMiddleware(wsEpic);
 
-sagaMiddleware.run(webSocketWatcher);
+export default applyMiddleware(epicMiddleware)(createStore)(reducers);
