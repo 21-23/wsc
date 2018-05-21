@@ -17,3 +17,7 @@ render(
     </Provider>,
     document.getElementById('react-main-app')
 );
+
+if ('Raven' in window) {
+    window.Raven.config(process.env.RAVEN_KEY).install();
+}

@@ -12,7 +12,8 @@ module.exports = merge(baseConfig, {
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: JSON.stringify('production')
+                NODE_ENV: JSON.stringify('production'),
+                RAVEN_KEY: process.env.RAVEN_CLIENT_KEY
             }
         }),
         new webpack.LoaderOptionsPlugin({

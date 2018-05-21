@@ -1,7 +1,12 @@
 import express from 'express';
 import path from 'path';
 
+import Raven from 'raven';
 import setErrorHandlers from 'server/utils/server_error_handling';
+
+if (process.env.NODE_ENV === 'production') {
+    Raven.config(process.env.RAVEN_KEY).install();
+}
 
 const app = express();
 
