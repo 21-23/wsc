@@ -14,6 +14,7 @@ import { play } from 'server/game';
 
 import {
     notGameMessage,
+    notAnObject,
 } from 'server/web_socket/message_creators';
 
 export function createGameServer({server, verifyClient = defaultVerifyClient}) {
@@ -38,9 +39,16 @@ export function createGameServer({server, verifyClient = defaultVerifyClient}) {
                 if(isGameMessage(parsedMessage)) {
                     play(parsedMessage, socket);
                 } else {
-                    socket.send(notGameMessage());
+                    let res = '';
+
+                    if (message === {}.toString()) {
+                        res = notAnObject();
+                    } else {
+                        res = notGameMessage();
+                    }
+
+                    socket.send(res);
                     socket.close();
-                  // We should somehow process frod messages from players
                 }
 
             } else {

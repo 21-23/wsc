@@ -50,6 +50,13 @@ export function notGameMessage() {
     });
 }
 
+export function notAnObject() {
+    return JSON.stringify({
+        error: true,
+        message: 'Ooops, you sended [object Object], looks like you forgot JSON.stringify',
+    });
+}
+
 export function wrongTaskName() {
     return JSON.stringify({
         error: true,
