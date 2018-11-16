@@ -20,14 +20,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Shastel/wsc.git"
+    "url": "git+https://github.com/21-23/wsc.git"
   },
-  "authors": [],
-  "license": "ISC",
+  "author": "21-23",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Shastel/wsc/issues"
+    "url": "https://github.com/21-23/wsc/issues"
   },
-  "homepage": "https://github.com/Shastel/wsc#readme",
+  "homepage": "https://github.com/21-23/wsc#readme",
   "dependencies": {
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
