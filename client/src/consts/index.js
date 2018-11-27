@@ -1,8 +1,8 @@
 export default {
     TIMER_ICONS_SIZE: 30,
-    TASKS_LENGTH: 4,
+    TASKS_LENGTH: 5,
     WINNERS: 5,
-    LAST_RACE: 3,
+    LAST_RACE: 4,
     ANIMATION_DURATION: 500,
     ANIMATION_NAME: 'move',
     darkNight: '#1F2739',

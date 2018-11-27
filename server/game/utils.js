@@ -11,17 +11,19 @@ import {
 
 import arithmetic from 'server/game/tasks/arithmetic';
 import bin_arithmetic from 'server/game/tasks/binary_arithmetic';
+import function_evaluation from 'server/game/tasks/function_evaluation';
 
 import {
     wrongTaskName
 } from 'server/web_socket/message_creators';
 
-const tasks = [arithmetic, bin_arithmetic];
+const tasks = [arithmetic, function_evaluation, bin_arithmetic];
 
 export function getFirstTask() {
     if (tasks) {
         return tasks[0] || ProtocolMessages.WIN;
     }
+
     return ProtocolMessages.WIN;
 }
 
