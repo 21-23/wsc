@@ -86,4 +86,4 @@
    { "token": my_saved_token, "command": "win" }
    ```
    
-  5. Send the uniq code
+  5. [Send the uniq code](https://goo.gl/zL4Tgi)
