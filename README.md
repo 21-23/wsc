@@ -96,7 +96,7 @@
    { "message": "You solve task", "nextTask":"win" }
    
    ```
-      
+   And finish the challenge!
    ```js
    /** Request the win! **/
       
