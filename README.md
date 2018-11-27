@@ -26,7 +26,7 @@
    { "token": my_saved_token, "command": saved_next_task_name }
    ```
    
-   There are 2 simple tasks:
+   There are 3 simple tasks:
    
    ```js
    {"name":"arithmetic","task":{"sign": OPERATION ,"values": ARRAY}}
@@ -44,18 +44,35 @@
    ```js 
    /** if answer is correct, server will respond with: **/
       
-   { "message":"You solve task","nextTask":"binary_arithmetic" }
+   { "message":"You solve task","nextTask":"function_evaluation" }
       
-   /** if answer is correct, server will respond with: **/
-      
-   { "token": my_saved_token, "command": saved_next_task_name }   
-   
     /** request the next task with: **/
    
    { "token": my_saved_token, "command": saved_next_task_name }
       
     ```
     2nd task: 
+    
+   ```js
+      
+   /** Server will send you the following message **/
+      
+   { "name":"function_evaluation","task": { "fn": STRING } }
+   
+   /** where STRING is String representation of function.
+       ---------------------------------------------
+       you have to somehow execute this function and send it's result 
+   **/
+   
+   { "token": my_saved_token, "command": "function_evaluation", "answer": RESULT }
+   ```
+   ```js 
+   /** if RESULT is correct, server will respond with **/
+   
+   { "message": "You solve task", "nextTask": "binary_arithmetic" }
+   
+   ```
+    3nd task: 
     
    ```js
       
