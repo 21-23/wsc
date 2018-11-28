@@ -17,6 +17,13 @@ import {
     notAnObject,
 } from 'server/web_socket/message_creators';
 
+function setInactivityTimeout(socket) {
+    return setTimeout(() => {
+        socket.close();
+    // this thing should be configurable in WSC-next
+    }, 5 * 60 * 1000);
+}
+
 export function createGameServer({server, verifyClient = defaultVerifyClient}) {
     const wss = new WebSocketServer({
         server,
@@ -29,34 +36,39 @@ export function createGameServer({server, verifyClient = defaultVerifyClient}) {
         cli.log('Player connected');
         socket._id = generateID();
 
+        let activityTimer = setInactivityTimeout(socket);
+
         socket.on('message', function __onGameMessage(message) {
             const parsedMessage = parseMessage(message);
 
             const state = store.getState();
             const isGameStarted = SystemSelectors.isGameStarted(state);
             cli.log(`Message recived ${JSON.stringify(parsedMessage)}`);
-            if (isGameStarted) {
-                if(isGameMessage(parsedMessage)) {
-                    play(parsedMessage, socket);
-                } else {
-                    let res = '';
 
-                    if (message === {}.toString()) {
-                        res = notAnObject();
-                    } else {
-                        res = notGameMessage();
-                    }
-
-                    socket.send(res);
-                    socket.close();
-                }
-
-            } else {
-                socket.send(JSON.stringify(messages.GAME_NOT_START_MSG));
+            if (!isGameStarted){
+                return socket.send(JSON.stringify(messages.GAME_NOT_START_MSG));
             }
+
+            activityTimer = setInactivityTimeout(socket);
+
+            if (isGameMessage(parsedMessage)) {
+                return play(parsedMessage, socket);
+            }
+
+            let res = '';
+
+            if (message === {}.toString()) {
+                res = notAnObject();
+            } else {
+                res = notGameMessage();
+            }
+
+            socket.send(res);
+            socket.close();
         });
 
-        socket.on('close', function (){
+        socket.on('close', function () {
+            clearTimeout(activityTimer);
             playerCloseConnetction(socket._id);
         });
 
