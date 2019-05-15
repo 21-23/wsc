@@ -103,4 +103,4 @@
    { "token": my_saved_token, "command": "win" }
    ```
    
-  5. [Send the uniq code](https://goo.gl/zL4Tgi)
+  5. [Send the uniq code](https://docs.google.com/forms/d/e/1FAIpQLSe4sehTAUjNDp4VZzdtO3VFh0xT_G0GhpvxTZphDwVDbq5iLw/viewform)
