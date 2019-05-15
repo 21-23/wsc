@@ -48,7 +48,8 @@ export function createGameServer({server, verifyClient = defaultVerifyClient}) {
             if (!isGameStarted){
                 return socket.send(JSON.stringify(messages.GAME_NOT_START_MSG));
             }
-
+            
+            clearTimeout(activityTimer);
             activityTimer = setInactivityTimeout(socket);
 
             if (isGameMessage(parsedMessage)) {
