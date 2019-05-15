@@ -14,19 +14,18 @@ import {
 } from 'server/web_socket/message_creators';
 
 export function play(message, socket) {
+    const state = store.getState();
     if(message.token && message.command !== ProtocolMessages.CHALLENGE_ACCEPTED) {
-        const state = store.getState();
         const playerId = playerTokenMap(state).get(message.token);
         if (playerId) {
             const player = players(state).get(playerId);
             return chooseAndPlay(message, player, socket);
         } else {
-            socket.send(alreadyAccepted());
+            socket.send(wrongToken());
             return false;
         }
     }
     if(message.command === ProtocolMessages.CHALLENGE_ACCEPTED) {
-        const state = store.getState();
         const socketsMap = playerSocket(state);
 
         const player = socketsMap.get(socket._id);
@@ -34,7 +33,7 @@ export function play(message, socket) {
         if (!player) {
             challengeAccepted(message, socket);
         } else {
-            socket.send(wrongToken());
+            socket.send(alreadyAccepted());
         }
     }
 }
