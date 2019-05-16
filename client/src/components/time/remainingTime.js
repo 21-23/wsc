@@ -9,7 +9,7 @@ export default class RemainingTime extends PureComponent {
         super(props);
 
         this.state = {
-            timer: this.props.end - new Date()
+            timer: Math.max(this.props.end - new Date(), 0)
         };
     }
 
